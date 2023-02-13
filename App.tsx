@@ -5,6 +5,7 @@ import {NavigationContainer} from "@react-navigation/native";
 import HomeScreen from "./src/screens/HomeScreen";
 import ContactsScreen from "./src/screens/ContactsScreen";
 import CatalogScreen from "./src/screens/CatalogScreen";
+import AboutInfoScreen from "./src/screens/AboutInfoScreen";
 import {Color} from "./src/constants/color";
 
 const Drawer = createDrawerNavigator();
@@ -49,6 +50,11 @@ export default function App() {
                     name="Catalog"
                     options={{drawerLabel: "Каталог", title: 'Каталог', drawerLabelStyle: styles.drawerLabelStyle}}
                     component={CatalogScreen}
+                />
+                <Drawer.Screen
+                    name="AboutInfo"
+                    options={{drawerLabel: "О Предприятии", title: 'О предприятии', drawerLabelStyle: styles.drawerLabelStyle}}
+                    component={AboutInfoScreen}
                 />
                 <Drawer.Screen
                     name="Contacts"
