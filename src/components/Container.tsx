@@ -1,10 +1,15 @@
 import {SafeAreaView} from "react-native";
-import React from "react";
+import React, {memo} from "react";
 
-export const Container = ({children}) => {
+interface Props {
+    children: any;
+}
+const Container = ({children}: Props): JSX.Element => {
     return (
         <SafeAreaView style={{flex: 1}}>
             {children}
         </SafeAreaView>
     )
 }
+
+export default memo(Container);
