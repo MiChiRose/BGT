@@ -1,4 +1,4 @@
-import React, {useMemo} from "react";
+import React, {memo} from "react";
 import {Image, ScrollView, Text, View, StyleSheet} from "react-native";
 import {Container} from "../components/Container";
 import {MapViewBGTFixed} from "../components/MapViewBGTFixed";
@@ -25,7 +25,7 @@ const MenuItem = ({data, image}) => {
     )
 }
 
-export const ContactsScreen = ({navigation}) => {
+const ContactsScreen = (): JSX.Element => {
     return (
         <Container>
             <ScrollView style={{flex: 1}}>
@@ -42,6 +42,8 @@ export const ContactsScreen = ({navigation}) => {
         </Container>
     );
 }
+
+export default memo(ContactsScreen);
 
 const styles = StyleSheet.create({
     image: {
