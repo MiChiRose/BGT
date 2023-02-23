@@ -8,7 +8,7 @@ interface GradientProps {
 
 export const Gradient = ({children, style}: GradientProps): JSX.Element => {
     return (
-        <LinearGradient colors={['#0060AB', '#161973']} style={[{flex: 1}, style]}>
+        <LinearGradient colors={['#0060AB', '#161973']} style={[style]}>
             {children}
         </LinearGradient>
     )
