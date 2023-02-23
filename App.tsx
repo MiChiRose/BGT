@@ -6,7 +6,9 @@ import HomeScreen from "./src/screens/HomeScreen";
 import ContactsScreen from "./src/screens/ContactsScreen";
 import CatalogScreen from "./src/screens/CatalogScreen";
 import AboutInfoScreen from "./src/screens/AboutInfoScreen";
+import ServicesScreen from "./src/screens/ServicesScreen";
 import {Color} from "./src/constants/color";
+import {Gradient} from "./src/components/Gradient";
 
 const Drawer = createDrawerNavigator();
 const screenWidth = Dimensions.get("window").width;
@@ -19,46 +21,76 @@ export default function App() {
             <Drawer.Navigator
                 initialRouteName="Home"
                 screenOptions={({navigation}) => ({
+                    headerBackground: () => <Gradient/>,
                     headerLeft: () => (
                         <TouchableOpacity style={styles.drawerButton} onPress={() => navigation.toggleDrawer()}>
-                            <Image source={require("./assets/drawer/drawer.png")}/>
+                            <Image source={require("./assets/drawer/drawer_white.png")}/>
                         </TouchableOpacity>
                     ),
-                    drawerStyle: {
-                        backgroundColor: Color.mainBlue,
-                        width: drawerWidth,
-                    },
+                    drawerStyle: {width: drawerWidth},
                 })}
                 drawerContent={(props) => {
                     return (
-                        <SafeAreaView style={styles.container}>
-                            <Image
-                                style={styles.drawerLogo}
-                                source={require('./assets/BTGLogo/belgaztechnika.png')}
-                            />
-                            <DrawerItemList {...props}/>
-                        </SafeAreaView>
+                        <Gradient>
+                            <SafeAreaView style={styles.container}>
+                                <Image
+                                    style={styles.drawerLogo}
+                                    source={require('./assets/BTGLogo/belgaztechnika.png')}
+                                />
+                                <DrawerItemList {...props}/>
+                            </SafeAreaView>
+                        </Gradient>
                     )
                 }}
             >
                 <Drawer.Screen
                     name="Home"
-                    options={{drawerLabel: "Главная", title: '', drawerLabelStyle: styles.drawerLabelStyle}}
+                    options={{
+                        drawerLabel: "Главная",
+                        title: '',
+                        drawerLabelStyle: styles.drawerLabelStyle,
+                        headerTitleStyle: styles.titleStyle
+                    }}
                     component={HomeScreen}
                 />
                 <Drawer.Screen
                     name="Catalog"
-                    options={{drawerLabel: "Каталог", title: 'Каталог', drawerLabelStyle: styles.drawerLabelStyle}}
+                    options={{
+                        drawerLabel: "Каталог",
+                        title: 'Каталог',
+                        drawerLabelStyle: styles.drawerLabelStyle,
+                        headerTitleStyle: styles.titleStyle
+                    }}
                     component={CatalogScreen}
                 />
                 <Drawer.Screen
+                    name="Service"
+                    options={{
+                        drawerLabel: "Услуги",
+                        title: 'Услуги',
+                        drawerLabelStyle: styles.drawerLabelStyle,
+                        headerTitleStyle: styles.titleStyle
+                    }}
+                    component={ServicesScreen}
+                />
+                <Drawer.Screen
                     name="AboutInfo"
-                    options={{drawerLabel: "О Предприятии", title: 'О предприятии', drawerLabelStyle: styles.drawerLabelStyle}}
+                    options={{
+                        drawerLabel: "О Предприятии",
+                        title: 'О предприятии',
+                        drawerLabelStyle: styles.drawerLabelStyle,
+                        headerTitleStyle: styles.titleStyle
+                    }}
                     component={AboutInfoScreen}
                 />
                 <Drawer.Screen
                     name="Contacts"
-                    options={{drawerLabel: "Конакты", title: 'Конакты', drawerLabelStyle: styles.drawerLabelStyle}}
+                    options={{
+                        drawerLabel: "Конакты",
+                        title: 'Конакты',
+                        drawerLabelStyle: styles.drawerLabelStyle,
+                        headerTitleStyle: styles.titleStyle
+                    }}
                     component={ContactsScreen}
                 />
             </Drawer.Navigator>
@@ -84,5 +116,10 @@ const styles = StyleSheet.create({
     drawerLogo: {
         marginVertical: 30,
         marginLeft: 10
+    },
+    titleStyle: {
+        color: Color.white,
+        fontSize: 20,
+        fontWeight: '700'
     }
 })
