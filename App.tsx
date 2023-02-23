@@ -21,7 +21,7 @@ export default function App() {
             <Drawer.Navigator
                 initialRouteName="Home"
                 screenOptions={({navigation}) => ({
-                    headerBackground: () => <Gradient/>,
+                    headerBackground: () => <Gradient style={styles.flex}/>,
                     headerLeft: () => (
                         <TouchableOpacity style={styles.drawerButton} onPress={() => navigation.toggleDrawer()}>
                             <Image source={require("./assets/drawer/drawer_white.png")}/>
@@ -31,7 +31,7 @@ export default function App() {
                 })}
                 drawerContent={(props) => {
                     return (
-                        <Gradient>
+                        <Gradient style={styles.flex}>
                             <SafeAreaView style={styles.container}>
                                 <Image
                                     style={styles.drawerLogo}
@@ -49,7 +49,7 @@ export default function App() {
                         drawerLabel: "Главная",
                         title: '',
                         drawerLabelStyle: styles.drawerLabelStyle,
-                        headerTitleStyle: styles.titleStyle
+                        headerTitleStyle: styles.titleStyle,
                     }}
                     component={HomeScreen}
                 />
@@ -121,5 +121,6 @@ const styles = StyleSheet.create({
         color: Color.white,
         fontSize: 20,
         fontWeight: '700'
-    }
+    },
+    flex: { flex: 1}
 })
