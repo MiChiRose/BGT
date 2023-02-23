@@ -36,11 +36,11 @@ const ContactsScreen = (): JSX.Element => {
                 <MapViewBGTFixed/>
                 <MenuItem
                     data={contactsData_Address}
-                    image={require("../../assets/address/address.png")}
+                    image={require("../../assets/address/address_gradient.png")}
                 />
                 <MenuItem
                     data={contactsData_Phones}
-                    image={require("../../assets/phone/phone.png")}
+                    image={require("../../assets/phone/phone_gradient.png")}
                 />
             </ScrollView>
         </Container>
