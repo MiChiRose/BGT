@@ -1,7 +1,11 @@
-import React, {memo} from "react";
-import {ScrollView} from "react-native";
+import React, {memo, useState} from "react";
+import {ScrollView, TouchableOpacity, Text, Image, View} from "react-native";
 import GradientButton from "../components/GradientButton";
 import {CarouselHome} from "./components/homeScreen/Carousel";
+import {Color} from "../constants/color";
+import {aboutCompanyText} from "../constants/data";
+import Container from "../components/Container";
+import DropdownItem from "./components/homeScreen/DropdownItem";
 
 const buttons = [
     {
@@ -24,21 +28,53 @@ const buttons = [
         onPress: () => {
         }
     }
-]
+];
 
 const HomeScreen = ({}) => {
+    const [showServices, setShowServices] = useState<boolean>(false);
+    const [showAbout, setShowAbout] = useState<boolean>(false);
+    const [showNews, setShowNews] = useState<boolean>(false);
+
     return (
-        <ScrollView style={{flex: 1, paddingHorizontal: 25, paddingTop: 25}}>
-            <CarouselHome/>
-            {buttons.map((item, index) => (
-                <GradientButton
-                    key={index}
-                    text={item.title}
-                    onPress={item.onPress}
-                    style={{marginBottom: 30}}
+        <Container>
+            <ScrollView>
+                <CarouselHome/>
+                {buttons.map((item, index) => (
+                    <GradientButton
+                        key={index}
+                        text={item.title}
+                        onPress={item.onPress}
+                        style={{marginBottom: 30}}
+                    />
+                ))}
+                <DropdownItem
+                    title={"Предоставляемые услуги"}
+                    show={showServices}
+                    setShow={setShowServices}
+                    children={
+                        <></>
+                    }
                 />
-            ))}
-        </ScrollView>
+                <DropdownItem
+                    title={"О Компании"}
+                    show={showAbout}
+                    setShow={setShowAbout}
+                    children={
+                        <View>
+                            <Text>{aboutCompanyText.text}</Text>
+                        </View>
+                    }
+                />
+                <DropdownItem
+                    title={"Новости"}
+                    show={showNews}
+                    setShow={setShowNews}
+                    children={
+                        <></>
+                    }
+                />
+            </ScrollView>
+        </Container>
     );
 }
 
