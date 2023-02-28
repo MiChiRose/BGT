@@ -35,7 +35,8 @@ export default function App() {
                             <SafeAreaView style={styles.container}>
                                 <Image
                                     style={styles.drawerLogo}
-                                    source={require('./assets/BTGLogo/belgaztechnika.png')}
+                                    source={require('./assets/BTGLogo/belgaztechnika_new.png')}
+                                    resizeMode={'contain'}
                                 />
                                 <DrawerItemList {...props}/>
                             </SafeAreaView>
@@ -45,12 +46,26 @@ export default function App() {
             >
                 <Drawer.Screen
                     name="Home"
-                    options={{
+                    options={({navigation}) => ({
                         drawerLabel: "Главная",
                         title: '',
+                        headerLeft: () => (
+                            <TouchableOpacity style={styles.drawerButton} onPress={() => navigation.toggleDrawer()}>
+                                <Image source={require("./assets/drawer/drawer_white.png")}/>
+                            </TouchableOpacity>
+                        ),
+                        headerTitle: () => (
+                            <View>
+                                <Image
+                                    style={styles.drawerButton}
+                                    source={require('./assets/BTGLogo/belgaztechnika_new.png')}
+                                    resizeMode={'contain'}
+                                />
+                            </View>
+                        ),
                         drawerLabelStyle: styles.drawerLabelStyle,
                         headerTitleStyle: styles.titleStyle,
-                    }}
+                    })}
                     component={HomeScreen}
                 />
                 <Drawer.Screen
@@ -122,5 +137,5 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '700'
     },
-    flex: { flex: 1}
+    flex: {flex: 1}
 })
