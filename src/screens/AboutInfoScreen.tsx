@@ -6,7 +6,7 @@ import {aboutCompanyText} from "../constants/data";
 const AboutInfoScreen = () => {
     return (
         <Container>
-            <ScrollView style={styles.scroll}>
+            <ScrollView>
                 <Text style={styles.text}>{aboutCompanyText.text}</Text>
             </ScrollView>
         </Container>
@@ -16,10 +16,6 @@ const AboutInfoScreen = () => {
 export default memo(AboutInfoScreen);
 
 const styles = StyleSheet.create({
-    scroll: {
-        marginHorizontal: 25,
-        marginTop: 10
-    },
     text: {
         fontSize: 16,
         fontWeight: '400'
