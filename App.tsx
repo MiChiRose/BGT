@@ -9,8 +9,11 @@ import AboutInfoScreen from "./src/screens/AboutInfoScreen";
 import ServicesScreen from "./src/screens/ServicesScreen";
 import {Color} from "./src/constants/color";
 import {Gradient} from "./src/components/Gradient";
+import {createStackNavigator} from "@react-navigation/stack";
+import CatalogDetailScreen from "./src/screens/CatalogDetailScreen";
 
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 const screenWidth = Dimensions.get("window").width;
 const drawerWidth = screenWidth - 72;
 
@@ -69,14 +72,15 @@ export default function App() {
                     component={HomeScreen}
                 />
                 <Drawer.Screen
-                    name="Catalog"
-                    options={{
+                    name="CatalogNavigator"
+                    options={({navigation}) => ({
                         drawerLabel: "Каталог",
                         title: 'Каталог',
                         drawerLabelStyle: styles.drawerLabelStyle,
-                        headerTitleStyle: styles.titleStyle
-                    }}
-                    component={CatalogScreen}
+                        headerTitleStyle: styles.titleStyle,
+                        headerShown: false
+                    })}
+                    component={CatalogNavigatorScreen}
                 />
                 <Drawer.Screen
                     name="Service"
@@ -110,6 +114,46 @@ export default function App() {
                 />
             </Drawer.Navigator>
         </NavigationContainer>
+    );
+}
+
+function CatalogNavigatorScreen() {
+    return (
+        <Stack.Navigator
+            screenOptions={{
+                // headerShown: false
+            }}
+        >
+            <Stack.Screen
+                options={({navigation}) => ({
+                    headerBackground: () => <Gradient style={styles.flex}/>,
+                    headerLeft: () => (
+                        <TouchableOpacity style={styles.drawerButton} onPress={() => navigation.toggleDrawer()}>
+                            <Image source={require("./assets/drawer/drawer_white.png")}/>
+                        </TouchableOpacity>
+                    ),
+                    title: "Каталог",
+                    headerTitleStyle: styles.titleStyle
+                })}
+                name="Catalog"
+                component={CatalogScreen}
+            />
+            <Stack.Screen
+                options={({route,navigation}) => ({
+                    headerBackground: () => <Gradient style={styles.flex}/>,
+                    headerLeft: () => (
+                        <TouchableOpacity style={styles.drawerButton} onPress={() => navigation.goBack()}>
+                            <Image source={require("./assets/drawer/drawer_white.png")}/>
+                        </TouchableOpacity>
+                    ),
+                    //@ts-ignore
+                    title: route.params?.name,
+                    headerTitleStyle: styles.titleStyle
+                })}
+                name="CatalogDetails"
+                component={CatalogDetailScreen}
+            />
+        </Stack.Navigator>
     );
 }
 
