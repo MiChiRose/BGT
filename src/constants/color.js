@@ -3,5 +3,6 @@ export const Color = {
     black: '#000000',
     white: '#FFFFFF',
     catalogItem: '#EAEAEA',
+    grey_8F: '#8F8F8F',
     detailsButton: '#161973'
 }
