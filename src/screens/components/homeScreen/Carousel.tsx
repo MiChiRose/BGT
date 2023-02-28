@@ -5,6 +5,7 @@ import {useSharedValue} from "react-native-reanimated";
 import {PaginationItem} from "./PaginationItem";
 import {width} from "../../../constants/deviceParam";
 import {carouselSlots} from "../../../constants/data";
+import {Color} from "../../../constants/color";
 export const CarouselHome = (): JSX.Element => {
     const progressValue = useSharedValue<number>(0)
     return (
@@ -30,13 +31,14 @@ export const CarouselHome = (): JSX.Element => {
                 renderItem={({item, index}: { item: string, index: number }) => (
                     <View
                         style={{
-                            backgroundColor: 'red',
+                            backgroundColor: Color.white,
                             flex: 1,
                             justifyContent: 'center',
+                            borderRadius: 15
                         }}
                     >
                         <Image
-                            style={{width: '100%', flex: 1, backgroundColor: 'blue'}}
+                            style={{width: '100%', flex: 1, borderRadius: 15}}
                             //@ts-ignore
                             source={item}
                             resizeMode={'cover'}
