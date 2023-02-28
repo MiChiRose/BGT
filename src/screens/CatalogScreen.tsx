@@ -4,7 +4,7 @@ import Container from "../components/Container";
 import {width} from "../constants/deviceParam";
 import {Color} from "../constants/color";
 import {catalogData} from "../constants/data";
-import CatalogItem from "./components/catalogScreen/CatalogItem";
+import CatalogItem from "./components/catalogScreen/ListItem";
 import CatalogDetailScreen from "./CatalogDetailScreen";
 
 interface Props {
