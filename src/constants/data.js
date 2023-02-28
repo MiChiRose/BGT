@@ -269,3 +269,36 @@ export const catalogData = [
         data: null
     }
 ]
+
+export const servicesData = [
+    {
+        id: '001',
+        title: 'Разработка схем проектного решения объектов систем газоснабжения',
+        image: require('../../assets/services/1.png')
+    },
+    {
+        id: '002',
+        title: 'Изготовление запчастей и ремкомплектов',
+        image: require('../../assets/services/2.png')
+    },
+    {
+        id: '003',
+        title: 'Поверка и ремонт промышленных счетчиков газа',
+        image: require('../../assets/services/3.png')
+    },
+    {
+        id: '004',
+        title: 'Механическая обработка, покраска, сварочные работы',
+        image: require('../../assets/services/4.png')
+    },
+    {
+        id: '005',
+        title: 'Ремонт приборов и оборудования производства РУП “БЕЛГАЗТЕХНИКА”',
+        image: require('../../assets/services/5.png')
+    },
+    {
+        id: '006',
+        title: 'Испытания и поверка сторонней продукции',
+        image: require('../../assets/services/6.png')
+    }
+]
