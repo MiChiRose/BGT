@@ -1,7 +1,7 @@
 import React, {memo} from "react";
 import Container from "../components/Container";
 import {ScrollView} from "react-native";
-import CatalogItem from "./components/catalogScreen/CatalogItem";
+import CatalogItem from "./components/catalogScreen/ListItem";
 
 interface Props {
     route?: any;
