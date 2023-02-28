@@ -10,24 +10,24 @@ import CatalogDetailScreen from "./CatalogDetailScreen";
 interface Props {
     navigation: any
 }
-const CatalogScreen = ({ navigation }: Props) => {
+
+const CatalogScreen = ({navigation: {navigate}}: Props) => {
     return (
-       <Container>
-           <SafeAreaView>
-               <ScrollView>
-                   {catalogData.map((item, index) => {
-                       return (
-                           <CatalogItem
-                               key={item.id}
-                               image={item.image}
-                               title={item.title}
-                               onPress={() => !!item.data && navigation.navigate(CatalogDetailScreen(item.data))}
-                           />
-                       )
-                   })}
-               </ScrollView>
-           </SafeAreaView>
-       </Container>
+        <Container>
+            <SafeAreaView>
+                <ScrollView>
+                    {catalogData.map((item, index) => (
+                        <CatalogItem
+                            key={item.id}
+                            image={item.image}
+                            title={item.title}
+                            onPress={() => navigate("CatalogDetails", {data: item.data, name: item.title})}
+                            disabled={!item.data}
+                        />
+                    ))}
+                </ScrollView>
+            </SafeAreaView>
+        </Container>
     );
 }
 
