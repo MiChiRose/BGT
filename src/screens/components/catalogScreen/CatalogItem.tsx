@@ -7,10 +7,11 @@ interface CatalogItemProps {
     image: any,
     title: string,
     onPress: () => void,
+    disabled?: boolean;
 }
-const CatalogItem = ({image, title, onPress}: CatalogItemProps): JSX.Element => {
+const CatalogItem = ({image, title, onPress, disabled}: CatalogItemProps): JSX.Element => {
     return (
-        <TouchableOpacity onPress={onPress} style={styles.container}>
+        <TouchableOpacity disabled={disabled} onPress={onPress} style={styles.container}>
             <Image source={image} resizeMode={'contain'} style={styles.image}/>
             <Text style={{flex: 1}}>{title}</Text>
         </TouchableOpacity>
