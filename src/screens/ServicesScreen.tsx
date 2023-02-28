@@ -1,11 +1,24 @@
 import React, {memo} from "react";
-import {Button, View} from "react-native";
+import {Button, ScrollView, View} from "react-native";
+import Container from "../components/Container";
+import {servicesData} from "../constants/data";
+import ListItem from "./components/catalogScreen/ListItem";
 
 const ServicesScreen = ({ }) => {
     return (
-        <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-
-        </View>
+        <Container>
+            <ScrollView>
+                {servicesData.map(item => (
+                    <ListItem
+                        key={item.id}
+                        title={item.title}
+                        image={item.image}
+                        disabled={true}
+                        showDetailsButton={true}
+                    />
+                ))}
+            </ScrollView>
+        </Container>
     );
 }
 
