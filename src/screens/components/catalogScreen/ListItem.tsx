@@ -3,22 +3,34 @@ import {Color} from "../../../constants/color";
 import {width} from "../../../constants/deviceParam";
 import {Image, Text, TouchableOpacity, StyleSheet, View} from "react-native";
 
-interface CatalogItemProps {
+interface ListItemProps {
     image: any,
     title: string,
-    onPress: () => void,
+    onPress?: () => void,
     disabled?: boolean;
+    showDetailsButton?: boolean
 }
-const CatalogItem = ({image, title, onPress, disabled}: CatalogItemProps): JSX.Element => {
+const ListItem = ({image, title, onPress, disabled, showDetailsButton = false}: ListItemProps): JSX.Element => {
     return (
         <TouchableOpacity disabled={disabled} onPress={onPress} style={styles.container}>
             <Image source={image} resizeMode={'contain'} style={styles.image}/>
-            <Text style={{flex: 1}}>{title}</Text>
+            <View style={styles.detailsContainer}>
+                <Text style={{width: '100%'}}>{title}</Text>
+                {showDetailsButton &&
+                    <TouchableOpacity
+                        disabled={false}
+                        onPress={() => {}}
+                        style={styles.detailsButton}
+                    >
+                        <Text style={styles.detailsButtonText}>Подробнее</Text>
+                    </TouchableOpacity>
+                }
+            </View>
         </TouchableOpacity>
     );
 }
 
-export default memo(CatalogItem);
+export default memo(ListItem);
 
 const styles = StyleSheet.create({
     container: {
@@ -37,5 +49,22 @@ const styles = StyleSheet.create({
         flex: 1,
         height: '100%',
         marginRight: 15
+    },
+    detailsContainer: {
+        height: "100%",
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+    },
+    detailsButton: {
+        marginTop: 15,
+        backgroundColor: Color.detailsButton,
+        paddingVertical: 5,
+        width: '100%',
+        borderRadius: 5,
+        alignItems: 'center'
+    },
+    detailsButtonText: {
+        color: Color.white
     }
 })
