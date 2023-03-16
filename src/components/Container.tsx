@@ -2,7 +2,7 @@ import React, {memo} from "react";
 import {SafeAreaView, StyleSheet} from "react-native";
 
 interface Props {
-    children: any;
+    children: JSX.Element;
 }
 
 const Container = ({children}: Props): JSX.Element => {
