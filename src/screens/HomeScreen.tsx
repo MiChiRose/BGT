@@ -2,11 +2,11 @@ import React, {memo, useState} from "react";
 import {Text, View} from "react-native";
 import GradientButton from "../components/GradientButton";
 import {CarouselHome} from "./components/homeScreen/Carousel";
-import {aboutCompanyText, catalogData} from "../constants/data";
+import {aboutCompanyText, catalogData, newsData, servicesData} from "../constants/data";
 import Container from "../components/Container";
 import DropdownItem from "./components/homeScreen/DropdownItem";
 import {CustomScrollView} from "../components/CustomScrollView";
-import {ServicesInfo} from "./components/homeScreen/ServicesInfo";
+import {HomeScreenDropdownInfo} from "./components/homeScreen/HomeScreenDropdownInfo";
 
 type Props = {
     navigation: any
@@ -54,7 +54,7 @@ const HomeScreen = ({navigation: {navigate}}: Props) => {
                     title={"Предоставляемые услуги"}
                     show={showServices}
                     setShow={setShowServices}
-                    children={<ServicesInfo/>}
+                    children={<HomeScreenDropdownInfo data={servicesData}/>}
                 />
                 <DropdownItem
                     title={"О Компании"}
@@ -66,9 +66,7 @@ const HomeScreen = ({navigation: {navigate}}: Props) => {
                     title={"Новости"}
                     show={showNews}
                     setShow={setShowNews}
-                    children={
-                        <></>
-                    }
+                    children={<HomeScreenDropdownInfo data={newsData}/>}
                 />
             </CustomScrollView>
         </Container>

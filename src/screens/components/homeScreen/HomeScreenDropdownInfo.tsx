@@ -25,12 +25,12 @@ type ItemProps = {
     image: string;
     text: string;
     last: boolean;
-}
+};
 
 const ItemContainer = ({image, text, last}: ItemProps) => {
     return (
         <View style={[styles.itemContainer, {marginBottom: last ? 0 : 20}]}>
-            <Image source={image} style={styles.itemImage}/>
+            <Image resizeMode={"contain"} source={image} style={styles.itemImage}/>
             <Text style={styles.itemText}>
                 {text}
             </Text>
@@ -38,10 +38,14 @@ const ItemContainer = ({image, text, last}: ItemProps) => {
     )
 }
 
-export const ServicesInfo = () => {
+type Props = {
+    data: {image: string, id: string, title: string}[];
+};
+
+export const HomeScreenDropdownInfo = ({ data }: Props) => {
     return (
         <View>
-            {servicesData.map((item, index) => {
+            {data.map((item, index) => {
                 return (
                     <ItemContainer
                         key={item.id}
