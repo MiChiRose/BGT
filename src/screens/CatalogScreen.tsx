@@ -1,21 +1,19 @@
 import React, {memo} from "react";
-import {Button, Dimensions, Image, SafeAreaView, ScrollView, Text, View} from "react-native";
+import {SafeAreaView} from "react-native";
 import Container from "../components/Container";
-import {width} from "../constants/deviceParam";
-import {Color} from "../constants/color";
 import {catalogData} from "../constants/data";
 import CatalogItem from "./components/catalogScreen/ListItem";
-import CatalogDetailScreen from "./CatalogDetailScreen";
+import {CustomScrollView} from "../components/CustomScrollView";
 
 interface Props {
-    navigation: any
+    navigation: any;
 }
 
 const CatalogScreen = ({navigation: {navigate}}: Props) => {
     return (
         <Container>
             <SafeAreaView>
-                <ScrollView>
+                <CustomScrollView>
                     {catalogData.map((item, index) => (
                         <CatalogItem
                             key={item.id}
@@ -25,7 +23,7 @@ const CatalogScreen = ({navigation: {navigate}}: Props) => {
                             disabled={!item.data}
                         />
                     ))}
-                </ScrollView>
+                </CustomScrollView>
             </SafeAreaView>
         </Container>
     );

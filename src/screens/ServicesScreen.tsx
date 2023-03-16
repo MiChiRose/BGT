@@ -1,13 +1,13 @@
 import React, {memo} from "react";
-import {Button, ScrollView, View} from "react-native";
 import Container from "../components/Container";
 import {servicesData} from "../constants/data";
 import ListItem from "./components/catalogScreen/ListItem";
+import {CustomScrollView} from "../components/CustomScrollView";
 
 const ServicesScreen = ({ }) => {
     return (
         <Container>
-            <ScrollView>
+            <CustomScrollView>
                 {servicesData.map(item => (
                     <ListItem
                         key={item.id}
@@ -17,7 +17,7 @@ const ServicesScreen = ({ }) => {
                         showDetailsButton={true}
                     />
                 ))}
-            </ScrollView>
+            </CustomScrollView>
         </Container>
     );
 }

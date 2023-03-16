@@ -1,14 +1,15 @@
 import React, {memo} from "react";
 import Container from "../components/Container";
-import {ScrollView, Text, StyleSheet} from "react-native";
+import {Text, StyleSheet} from "react-native";
 import {aboutCompanyText} from "../constants/data";
+import {CustomScrollView} from "../components/CustomScrollView";
 
 const AboutInfoScreen = () => {
     return (
         <Container>
-            <ScrollView>
+            <CustomScrollView>
                 <Text style={styles.text}>{aboutCompanyText.text}</Text>
-            </ScrollView>
+            </CustomScrollView>
         </Container>
     )
 }
