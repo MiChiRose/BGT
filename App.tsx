@@ -49,31 +49,18 @@ export default function App() {
             >
                 <Drawer.Screen
                     name="Home"
-                    options={({navigation}) => ({
+                    options={() => ({
                         drawerLabel: "Главная",
                         title: '',
-                        headerLeft: () => (
-                            <TouchableOpacity style={styles.drawerButton} onPress={() => navigation.toggleDrawer()}>
-                                <Image source={require("./assets/drawer/drawer_white.png")}/>
-                            </TouchableOpacity>
-                        ),
-                        headerTitle: () => (
-                            <View>
-                                <Image
-                                    style={styles.drawerButton}
-                                    source={require('./assets/BTGLogo/belgaztechnika_new.png')}
-                                    resizeMode={'contain'}
-                                />
-                            </View>
-                        ),
                         drawerLabelStyle: styles.drawerLabelStyle,
                         headerTitleStyle: styles.titleStyle,
+                        headerShown: false,
                     })}
-                    component={HomeScreen}
+                    component={HomeNavigatorScreen}
                 />
                 <Drawer.Screen
                     name="CatalogNavigator"
-                    options={({navigation}) => ({
+                    options={() => ({
                         drawerLabel: "Каталог",
                         title: 'Каталог',
                         drawerLabelStyle: styles.drawerLabelStyle,
@@ -117,13 +104,52 @@ export default function App() {
     );
 }
 
+function HomeNavigatorScreen() {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen
+                options={({navigation}) => ({
+                    headerBackground: () => <Gradient style={styles.flex}/>,
+                    headerLeft: () => (
+                        <TouchableOpacity style={styles.drawerButton} onPress={() => navigation.toggleDrawer()}>
+                            <Image source={require("./assets/drawer/drawer_white.png")}/>
+                        </TouchableOpacity>
+                    ),
+                    headerTitle: () => (
+                        <View>
+                            <Image
+                                style={styles.drawerButton}
+                                source={require('./assets/BTGLogo/belgaztechnika_new.png')}
+                                resizeMode={'contain'}
+                            />
+                        </View>
+                    ),
+                })}
+                name="Home"
+                component={HomeScreen}
+            />
+            <Stack.Screen
+                options={({route,navigation}) => ({
+                    headerBackground: () => <Gradient style={styles.flex}/>,
+                    headerLeft: () => (
+                        <TouchableOpacity style={styles.drawerButton} onPress={() => navigation.goBack()}>
+                            <Image source={require("./assets/drawer/drawer_white.png")}/>
+                        </TouchableOpacity>
+                    ),
+                    //@ts-ignore
+                    title: route.params?.name,
+                    headerTitleStyle: styles.titleStyle
+                })}
+                name="CatalogDetailsHome"
+                component={CatalogDetailScreen}
+            />
+        </Stack.Navigator>
+    )
+}
+
 function CatalogNavigatorScreen() {
     return (
-        <Stack.Navigator
-            screenOptions={{
-                // headerShown: false
-            }}
-        >
+        <Stack.Navigator>
             <Stack.Screen
                 options={({navigation}) => ({
                     headerBackground: () => <Gradient style={styles.flex}/>,
