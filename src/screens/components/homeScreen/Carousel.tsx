@@ -6,6 +6,7 @@ import {PaginationItem} from "./PaginationItem";
 import {width} from "../../../constants/deviceParam";
 import {carouselSlots} from "../../../constants/data";
 import {Color} from "../../../constants/color";
+
 export const CarouselHome = (): JSX.Element => {
     const progressValue = useSharedValue<number>(0)
     return (
@@ -18,17 +19,14 @@ export const CarouselHome = (): JSX.Element => {
                 autoPlayInterval={5000}
                 width={width - 50}
                 height={(width - 50) / 1.5}
-                mode="parallax"
-                modeConfig={{
-                    parallaxScrollingScale: 0.9,
-                    parallaxScrollingOffset: 50,
-                }}
+                mode="vertical-stack"
+                modeConfig={{}}
                 onProgressChange={(_, absoluteProgress) =>
                     (progressValue.value = absoluteProgress)
                 }
                 data={carouselSlots}
                 scrollAnimationDuration={1000}
-                renderItem={({item, index}: { item: string, index: number }) => (
+                renderItem={({item}: { item: string, index: number }) => (
                     <View
                         style={{
                             backgroundColor: Color.white,
@@ -39,7 +37,6 @@ export const CarouselHome = (): JSX.Element => {
                     >
                         <Image
                             style={{width: '100%', flex: 1, borderRadius: 15}}
-                            //@ts-ignore
                             source={item}
                             resizeMode={'cover'}
                         />
@@ -52,8 +49,8 @@ export const CarouselHome = (): JSX.Element => {
                     justifyContent: "space-between",
                     width: 50,
                     alignSelf: "center",
-                }
-                }
+                    marginTop: 10
+                }}
             >
                 {carouselSlots.map((item, index) => {
                     return (
