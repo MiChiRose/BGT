@@ -6,7 +6,7 @@ import {Color} from "../constants/color";
 interface ButtonProps {
     text: string;
     onPress: () => void;
-    style?: StyleProp<ViewStyle>
+    style?: StyleProp<ViewStyle>;
 }
 
 const GradientButton = ({text, onPress, style}: ButtonProps): JSX.Element => {
