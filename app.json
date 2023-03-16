@@ -4,11 +4,11 @@
     "slug": "BGT",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon/icon.png",
+    "icon": "./assets/icon/icon_new.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash/splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/splash/splash_new.png",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
