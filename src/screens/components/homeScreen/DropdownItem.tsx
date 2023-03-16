@@ -5,7 +5,7 @@ import {Color} from "../../../constants/color";
 interface DropdownProps {
     show: boolean;
     setShow: (val: boolean) => void;
-    children: any;
+    children: JSX.Element;
     title: string;
 }
 const DropdownItem = ({show, setShow, children, title}: DropdownProps): JSX.Element => {
