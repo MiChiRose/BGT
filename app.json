@@ -24,10 +24,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.yurasf.BGT"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fdacca7c-e41d-42ce-9775-ea82fb48cfa6"
+      }
+    },
+    "owner": "yurasf"
   }
 }
