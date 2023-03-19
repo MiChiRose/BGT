@@ -30,7 +30,7 @@ export const CatalogNavigatorScreen = () => {
                     headerBackground: () => <Gradient style={styles.flex}/>,
                     headerLeft: () => (
                         <TouchableOpacity style={styles.drawerButton} onPress={() => navigation.goBack()}>
-                            <Image source={require("../../assets/drawer/drawer_white.png")}/>
+                            <Image source={require("../../assets/arrow/arrow_white_back.png")}/>
                         </TouchableOpacity>
                     ),
                     //@ts-ignore
