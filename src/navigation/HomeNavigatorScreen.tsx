@@ -46,15 +46,6 @@ export const HomeNavigatorScreen = () => {
                     //@ts-ignore
                     title: route.params?.name,
                     headerTitleStyle: styles.titleStyle,
-                    // headerTitle: () => (
-                    //     <View>
-                    //         <Image
-                    //             style={styles.drawerButton}
-                    //             source={require('./assets/BTGLogo/belgaztechnika_new.png')}
-                    //             resizeMode={'contain'}
-                    //         />
-                    //     </View>
-                    // ),
                 })}
                 name="CatalogDetailsHome"
                 component={CatalogDetailScreen}

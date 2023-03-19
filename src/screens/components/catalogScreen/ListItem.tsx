@@ -1,7 +1,7 @@
 import React, {memo} from "react";
+import {Image, Text, TouchableOpacity, StyleSheet, View} from "react-native";
 import {Color} from "../../../constants/color";
 import {width} from "../../../constants/deviceParam";
-import {Image, Text, TouchableOpacity, StyleSheet, View} from "react-native";
 
 interface ListItemProps {
     image: any,
@@ -10,6 +10,7 @@ interface ListItemProps {
     disabled?: boolean;
     showDetailsButton?: boolean
 }
+
 const ListItem = ({image, title, onPress, disabled, showDetailsButton = false}: ListItemProps): JSX.Element => {
     return (
         <TouchableOpacity disabled={disabled} onPress={onPress} style={styles.container}>
@@ -34,7 +35,7 @@ export default memo(ListItem);
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Color.catalogItem,
+        backgroundColor: Color.listItem,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',

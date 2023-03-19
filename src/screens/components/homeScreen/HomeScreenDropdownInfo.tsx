@@ -30,6 +30,7 @@ type ItemProps = {
 const ItemContainer = ({image, text, last}: ItemProps) => {
     return (
         <View style={[styles.itemContainer, {marginBottom: last ? 0 : 20}]}>
+            {/*@ts-ignore*/}
             <Image resizeMode={"contain"} source={image} style={styles.itemImage}/>
             <Text style={styles.itemText}>
                 {text}

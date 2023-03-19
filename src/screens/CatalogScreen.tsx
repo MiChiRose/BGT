@@ -2,7 +2,7 @@ import React, {memo} from "react";
 import {SafeAreaView} from "react-native";
 import Container from "../components/Container";
 import {catalogData} from "../constants/data";
-import CatalogItem from "./components/catalogScreen/ListItem";
+import ListItem from "./components/catalogScreen/ListItem";
 import {CustomScrollView} from "../components/CustomScrollView";
 
 interface Props {
@@ -15,7 +15,7 @@ const CatalogScreen = ({navigation: {navigate}}: Props) => {
             <SafeAreaView>
                 <CustomScrollView>
                     {catalogData.map((item, index) => (
-                        <CatalogItem
+                        <ListItem
                             key={item.id}
                             image={item.image}
                             title={item.title}

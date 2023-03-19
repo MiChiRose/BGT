@@ -1,6 +1,6 @@
 import React, {memo} from "react";
 import Container from "../components/Container";
-import CatalogItem from "./components/catalogScreen/ListItem";
+import ListItem from "./components/catalogScreen/ListItem";
 import {CustomScrollView} from "../components/CustomScrollView";
 
 interface Props {
@@ -13,7 +13,7 @@ const CatalogDetailScreen = ({route}: Props): JSX.Element => {
         <Container>
             <CustomScrollView>
                 {data?.map((item: any) => (
-                    <CatalogItem
+                    <ListItem
                         key={item.id}
                         title={item.title}
                         image={item.image}

@@ -1,9 +1,9 @@
 import React from "react";
-import {Image, TouchableOpacity, StyleSheet, Platform} from "react-native";
+import {Image, TouchableOpacity, StyleSheet} from "react-native";
+import {createStackNavigator} from "@react-navigation/stack";
 import {Gradient} from "../components/Gradient";
 import CatalogScreen from "../screens/CatalogScreen";
 import CatalogDetailScreen from "../screens/CatalogDetailScreen";
-import {createStackNavigator} from "@react-navigation/stack";
 import {Color} from "../constants/color";
 
 const Stack = createStackNavigator();
