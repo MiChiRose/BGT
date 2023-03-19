@@ -5,6 +5,8 @@ import {useSharedValue} from "react-native-reanimated";
 import {PaginationItem} from "./PaginationItem";
 import {width} from "../../../constants/deviceParam";
 import {carouselSlots} from "../../../constants/data";
+import {Color} from "../../../constants/color";
+
 export const CarouselHome = (): JSX.Element => {
     const progressValue = useSharedValue<number>(0)
     return (
@@ -17,29 +19,26 @@ export const CarouselHome = (): JSX.Element => {
                 autoPlayInterval={5000}
                 width={width - 50}
                 height={(width - 50) / 1.5}
-                mode="parallax"
-                modeConfig={{
-                    parallaxScrollingScale: 0.9,
-                    parallaxScrollingOffset: 50,
-                }}
+                mode="vertical-stack"
+                modeConfig={{}}
                 onProgressChange={(_, absoluteProgress) =>
                     (progressValue.value = absoluteProgress)
                 }
                 data={carouselSlots}
                 scrollAnimationDuration={1000}
-                renderItem={({item, index}: { item: string, index: number }) => (
+                renderItem={({item}: { item: string, index: number }) => (
                     <View
                         style={{
-                            backgroundColor: 'red',
+                            backgroundColor: Color.transparent,
                             flex: 1,
                             justifyContent: 'center',
                         }}
                     >
                         <Image
-                            style={{width: '100%', flex: 1, backgroundColor: 'blue'}}
+                            style={{width: '100%', flex: 1, borderRadius: 15}}
                             //@ts-ignore
                             source={item}
-                            resizeMode={'cover'}
+                            resizeMode={'contain'}
                         />
                     </View>
                 )}
@@ -48,10 +47,10 @@ export const CarouselHome = (): JSX.Element => {
                 style={{
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    width: 50,
+                    width: 100,
                     alignSelf: "center",
-                }
-                }
+                    marginTop: 10
+                }}
             >
                 {carouselSlots.map((item, index) => {
                     return (

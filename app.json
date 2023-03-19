@@ -4,11 +4,11 @@
     "slug": "BGT",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon/icon_new.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/splash/splash_new.png",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -22,12 +22,22 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon/icon_new.png",
         "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.yurasf.BGT",
+      "config": {
+        "googleMaps": { "apiKey": "AIzaSyA1UAnR_wrSbc6XCbIGKbLweW_sE37bZ-8" }
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fdacca7c-e41d-42ce-9775-ea82fb48cfa6"
+      }
+    },
+    "owner": "yurasf"
   }
 }

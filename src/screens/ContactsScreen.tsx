@@ -1,8 +1,9 @@
 import React, {memo} from "react";
-import {Image, ScrollView, Text, View, StyleSheet, ImageProps} from "react-native";
+import {Image, Text, View, StyleSheet} from "react-native";
 import Container from "../components/Container";
 import {MapViewBGTFixed} from "../components/MapViewBGTFixed";
 import {contactsData_Phones, contactsData_Address} from "../constants/data";
+import {CustomScrollView} from "../components/CustomScrollView";
 
 interface MenuItemProps {
     data: Array<any>;
@@ -19,7 +20,7 @@ const MenuItem = ({data, image}: MenuItemProps): JSX.Element => {
                             style={styles.image}
                         /> : <View style={styles.image}/>}
                     </View>
-                    <View style={{flex: 1}}>
+                    <View style={styles.flex}>
                         <Text style={styles.textHeader}>{element.header}</Text>
                         <Text style={styles.textTitle}>{element.title}</Text>
                     </View>
@@ -32,7 +33,7 @@ const MenuItem = ({data, image}: MenuItemProps): JSX.Element => {
 const ContactsScreen = (): JSX.Element => {
     return (
         <Container>
-            <ScrollView style={styles.flex}>
+            <CustomScrollView>
                 <MapViewBGTFixed/>
                 <MenuItem
                     data={contactsData_Address}
@@ -42,7 +43,7 @@ const ContactsScreen = (): JSX.Element => {
                     data={contactsData_Phones}
                     image={require("../../assets/phone/phone_gradient.png")}
                 />
-            </ScrollView>
+            </CustomScrollView>
         </Container>
     );
 }
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     },
     menuItemContainer: {
         marginLeft: 25,
-        marginRight: 115,
+        marginRight: 25,
         marginTop: 20,
         flexDirection: 'column'
     },

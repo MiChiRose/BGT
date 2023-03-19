@@ -1,26 +1,27 @@
 import React, {memo} from "react";
 import Container from "../components/Container";
-import {ScrollView} from "react-native";
-import CatalogItem from "./components/catalogScreen/CatalogItem";
+import ListItem from "./components/catalogScreen/ListItem";
+import {CustomScrollView} from "../components/CustomScrollView";
 
 interface Props {
-    data: any;
+    route?: any;
+    navigation?: any;
 }
-const CatalogDetailScreen = ({data}: Props): JSX.Element => {
+const CatalogDetailScreen = ({route}: Props): JSX.Element => {
+    const data = route.params.data;
     return (
         <Container>
-            <ScrollView>
-                {data.map((item: any) => {
-                    return (
-                        <CatalogItem
-                            key={item.id}
-                            title={item.title}
-                            image={item.image}
-                            onPress={() => {}}
-                        />
-                    )
-                })}
-            </ScrollView>
+            <CustomScrollView>
+                {data?.map((item: any) => (
+                    <ListItem
+                        key={item.id}
+                        title={item.title}
+                        image={item.image}
+                        onPress={() => {}}
+                        disabled={true}
+                    />
+                ))}
+            </CustomScrollView>
         </Container>
     )
 }

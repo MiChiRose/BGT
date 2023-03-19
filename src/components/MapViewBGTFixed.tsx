@@ -20,8 +20,8 @@ export const MapViewBGTFixed = React.memo(() => {
         >
             <Marker
                 coordinate={region}
-                title={"title"}
-                description={"description"}
+                title={"Белгазтехника"}
+                description={"ул.Гурского, д.30"}
             />
         </MapView>
     )
