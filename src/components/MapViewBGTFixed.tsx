@@ -15,6 +15,7 @@ export const MapViewBGTFixed = React.memo(() => {
             zoomEnabled={false}
             scrollEnabled={false}
             rotateEnabled={false}
+            mapType={Platform.OS == "android" ? "none" : "standard"}
             style={{height: 200, width: "100%"}}
             region={region}
         >
