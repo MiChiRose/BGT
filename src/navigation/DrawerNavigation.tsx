@@ -18,7 +18,7 @@ export const DrawerNavigation = () => {
     return (
         <NavigationContainer>
             <Drawer.Navigator
-                initialRouteName="Home"
+                initialRouteName="HomeMain"
                 screenOptions={({navigation}) => ({
                     headerBackground: () => <Gradient style={styles.flex}/>,
                     headerLeft: () => (
