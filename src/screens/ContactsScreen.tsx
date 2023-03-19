@@ -20,7 +20,7 @@ const MenuItem = ({data, image}: MenuItemProps): JSX.Element => {
                             style={styles.image}
                         /> : <View style={styles.image}/>}
                     </View>
-                    <View style={{flex: 1}}>
+                    <View style={styles.flex}>
                         <Text style={styles.textHeader}>{element.header}</Text>
                         <Text style={styles.textTitle}>{element.title}</Text>
                     </View>
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     },
     menuItemContainer: {
         marginLeft: 25,
-        marginRight: 115,
+        marginRight: 25,
         marginTop: 20,
         flexDirection: 'column'
     },
