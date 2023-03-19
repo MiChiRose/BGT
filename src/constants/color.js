@@ -4,5 +4,6 @@ export const Color = {
     white: '#FFFFFF',
     listItem: '#EAEAEA',
     grey_8F: '#8F8F8F',
-    detailsButton: '#161973'
+    detailsButton: '#161973',
+    transparent: 'transparent'
 }
