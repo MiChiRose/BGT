@@ -1,8 +1,14 @@
 import React from "react";
 import {DrawerNavigation} from "./src/navigation/DrawerNavigation";
+import {StatusBar} from "expo-status-bar";
 
 export default function App() {
-    return <DrawerNavigation/>
+    return (
+        <>
+            <StatusBar style={"light"} translucent={true} />
+            <DrawerNavigation/>
+        </>
+    )
 }
 
 

@@ -12,7 +12,7 @@ export const MapViewBGTFixed = React.memo(() => {
     return (
         <MapView
             pitchEnabled={false}
-            // zoomEnabled={false}
+            zoomEnabled={false}
             scrollEnabled={false}
             rotateEnabled={false}
             style={{height: 200, width: "100%"}}
