@@ -29,16 +29,16 @@ export const CarouselHome = (): JSX.Element => {
                 renderItem={({item}: { item: string, index: number }) => (
                     <View
                         style={{
-                            backgroundColor: Color.white,
+                            backgroundColor: Color.transparent,
                             flex: 1,
                             justifyContent: 'center',
-                            borderRadius: 15
                         }}
                     >
                         <Image
                             style={{width: '100%', flex: 1, borderRadius: 15}}
+                            //@ts-ignore
                             source={item}
-                            resizeMode={'cover'}
+                            resizeMode={'contain'}
                         />
                     </View>
                 )}
@@ -47,7 +47,7 @@ export const CarouselHome = (): JSX.Element => {
                 style={{
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    width: 50,
+                    width: 100,
                     alignSelf: "center",
                     marginTop: 10
                 }}
