@@ -25,7 +25,10 @@
         "foregroundImage": "./assets/icon/icon_new.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.yurasf.BGT"
+      "package": "com.yurasf.BGT",
+      "config": {
+        "googleMaps": { "apiKey": "AIzaSyA1UAnR_wrSbc6XCbIGKbLweW_sE37bZ-8" }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
