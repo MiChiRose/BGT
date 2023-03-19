@@ -105,6 +105,8 @@ export const aboutCompanyText = {
 export const carouselSlots = [
     require("../../assets/carousel/mainBuilding/building_main.png"),
     require("../../assets/carousel/grp/grp.png"),
+    require("../../assets/carousel/proizvodstvo/proizv.png"),
+    require("../../assets/carousel/over150/over150.png"),
     require("../../assets/carousel/sozidanie/sozid.png")
 ];
 
