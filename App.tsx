@@ -48,7 +48,7 @@ export default function App() {
                 }}
             >
                 <Drawer.Screen
-                    name="Home"
+                    name="HomeMain"
                     options={() => ({
                         drawerLabel: "Главная",
                         title: '',
@@ -106,7 +106,10 @@ export default function App() {
 
 function HomeNavigatorScreen() {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={{
+                headerTitleAlign: "center"
+        }}>
             <Stack.Screen
                 options={({navigation}) => ({
                     headerBackground: () => <Gradient style={styles.flex}/>,
@@ -138,7 +141,16 @@ function HomeNavigatorScreen() {
                     ),
                     //@ts-ignore
                     title: route.params?.name,
-                    headerTitleStyle: styles.titleStyle
+                    headerTitleStyle: styles.titleStyle,
+                    // headerTitle: () => (
+                    //     <View>
+                    //         <Image
+                    //             style={styles.drawerButton}
+                    //             source={require('./assets/BTGLogo/belgaztechnika_new.png')}
+                    //             resizeMode={'contain'}
+                    //         />
+                    //     </View>
+                    // ),
                 })}
                 name="CatalogDetailsHome"
                 component={CatalogDetailScreen}
