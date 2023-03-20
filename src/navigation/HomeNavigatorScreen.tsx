@@ -1,5 +1,5 @@
 import React from "react";
-import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
+import {Image, StyleSheet, TouchableOpacity, Text, View} from "react-native";
 import HomeScreen from "../screens/HomeScreen";
 import CatalogDetailScreen from "../screens/CatalogDetailScreen";
 import {Gradient} from "../components/Gradient";
@@ -10,10 +10,7 @@ const Stack = createStackNavigator();
 
 export const HomeNavigatorScreen = () => {
     return (
-        <Stack.Navigator
-            screenOptions={{
-                headerTitleAlign: "center"
-            }}>
+        <Stack.Navigator>
             <Stack.Screen
                 options={({navigation}) => ({
                     headerBackground: () => <Gradient style={styles.flex}/>,
@@ -43,9 +40,8 @@ export const HomeNavigatorScreen = () => {
                             <Image source={require("../../assets/arrow/arrow_white_back.png")}/>
                         </TouchableOpacity>
                     ),
-                    //@ts-ignore
                     title: route.params?.name,
-                    headerTitleStyle: styles.titleStyle,
+                    headerTitleStyle: styles.titleStyle
                 })}
                 name="CatalogDetailsHome"
                 component={CatalogDetailScreen}
@@ -58,12 +54,12 @@ const styles = StyleSheet.create({
     drawerButton: {
         paddingVertical: 12,
         paddingLeft: 30,
-        paddingRight: 12
+        paddingRight: 12,
     },
     titleStyle: {
         color: Color.white,
         fontSize: 20,
-        fontWeight: '700'
+        fontWeight: '700',
     },
     flex: {flex: 1}
 })

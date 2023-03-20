@@ -18,7 +18,7 @@ export const CarouselHome = (): JSX.Element => {
                 autoPlay={true}
                 autoPlayInterval={5000}
                 width={width - 50}
-                height={(width - 50) / 1.5}
+                height={(width - 50) / 1.65}
                 mode="vertical-stack"
                 modeConfig={{}}
                 onProgressChange={(_, absoluteProgress) =>

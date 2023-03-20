@@ -88,8 +88,8 @@ export const DrawerNavigation = () => {
                 <Drawer.Screen
                     name="Contacts"
                     options={{
-                        drawerLabel: "Конакты",
-                        title: 'Конакты',
+                        drawerLabel: "Контакты",
+                        title: 'Контакты',
                         drawerLabelStyle: styles.drawerLabelStyle,
                         headerTitleStyle: styles.titleStyle
                     }}
