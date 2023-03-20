@@ -1,5 +1,5 @@
 import React from "react";
-import {Image, StyleSheet, TouchableOpacity, Text, View} from "react-native";
+import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
 import HomeScreen from "../screens/HomeScreen";
 import CatalogDetailScreen from "../screens/CatalogDetailScreen";
 import {Gradient} from "../components/Gradient";
