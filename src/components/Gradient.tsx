@@ -2,7 +2,7 @@ import {LinearGradient} from "expo-linear-gradient";
 import {StyleProp, ViewStyle} from "react-native";
 
 interface GradientProps {
-    children?: any;
+    children?: JSX.Element | JSX.Element[];
     style?: StyleProp<ViewStyle>
 }
 
