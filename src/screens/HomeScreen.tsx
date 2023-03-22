@@ -1,5 +1,5 @@
 import React, {memo, useState} from "react";
-import {Text, View} from "react-native";
+import {Text} from "react-native";
 import GradientButton from "../components/GradientButton";
 import {CarouselHome} from "./components/homeScreen/Carousel";
 import {aboutCompanyText, catalogData, newsData, servicesData} from "../constants/data";
