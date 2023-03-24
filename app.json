@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "BGT",
+    "name": "Белгазтехника",
     "slug": "BGT",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
-    "icon": "./assets/icon/icon_new.png",
+    "icon": "./assets/icon/icon_final.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash/splash_new.png",
