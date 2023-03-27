@@ -1,4 +1,4 @@
-import React, {memo, useState} from "react";
+import React, {memo, useEffect, useState} from "react";
 import {Text} from "react-native";
 import GradientButton from "../components/GradientButton";
 import {CarouselHome} from "./components/homeScreen/Carousel";
@@ -7,6 +7,8 @@ import Container from "../components/Container";
 import DropdownItem from "./components/homeScreen/DropdownItem";
 import {CustomScrollView} from "../components/CustomScrollView";
 import {HomeScreenDropdownInfo} from "./components/homeScreen/HomeScreenDropdownInfo";
+import dataBase from "../../Firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 type Props = {
     navigation: any
@@ -16,6 +18,20 @@ const HomeScreen = ({navigation: {navigate}}: Props) => {
     const [showServices, setShowServices] = useState<boolean>(false);
     const [showAbout, setShowAbout] = useState<boolean>(false);
     const [showNews, setShowNews] = useState<boolean>(false);
+
+    // useEffect(() => {
+
+    const a = async () => {
+        const querySnapshot = await getDocs(collection(dataBase, "contacts"));
+        querySnapshot.forEach((doc) => {
+            console.log(doc.data());
+        });
+    }
+
+    useEffect(() => {
+        a();
+    }, []);
+    // }, []);
 
     const buttons = [
         {
