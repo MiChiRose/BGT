@@ -128,7 +128,7 @@ export const catalogData = [
             },
             {
                 id: '01_3',
-                title: 'Газоаналитические приборы переносного типа',
+                title: 'Газоаналитические приборы стационарного типа',
                 image: require('../../assets/catalog/piu/3.png')
             },
             {
@@ -143,7 +143,7 @@ export const catalogData = [
             },
             {
                 id: '01_6',
-                title: 'Прибор диагностики плит гаовых бытовых ПДП',
+                title: 'Прибор диагностики плит газовых бытовых ПДП',
                 image: require('../../assets/catalog/piu/6.png')
             },
         ]
