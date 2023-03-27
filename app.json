@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon/icon_new.png",
+        "foregroundImage": "./assets/icon/icon_final.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.yurasf.BGT",
