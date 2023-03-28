@@ -1,6 +1,6 @@
 import React, {memo, useEffect, useState} from "react";
 import Container from "../components/Container";
-import {Text, StyleSheet, Image} from "react-native";
+import {Text, StyleSheet, Image, Dimensions} from "react-native";
 import {CustomScrollView} from "../components/CustomScrollView";
 import {getData} from "../components/data";
 import Spinner from "react-native-loading-spinner-overlay";
@@ -29,7 +29,7 @@ const AboutInfoScreen = () => {
     return (
         <Container>
             <CustomScrollView refreshing={loading} refresh={dataLoad}>
-                <Image style={styles.image} source={require("../../assets/aboutBgt/aboutBgt.png")}/>
+                <Image style={styles.image1} source={!data?.image ? require("../../assets/aboutBgt/aboutBgt.png") : {uri: data?.image}}/>
                 <Text style={styles.text}>{data?.text}</Text>
             </CustomScrollView>
             <Spinner visible={loading}/>
@@ -46,6 +46,12 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '100%',
+        marginBottom: 25
+    },
+    image1: {
+        width: Dimensions.get("window").width - 50,
+        height: (Dimensions.get("window").width - 50) / 1.5,
+        resizeMode: "cover",
         marginBottom: 25
     }
 });
