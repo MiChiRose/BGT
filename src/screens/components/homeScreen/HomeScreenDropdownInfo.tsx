@@ -2,6 +2,7 @@ import {servicesData} from "../../../constants/data";
 import React from "react";
 import {Image, Text, View, StyleSheet} from "react-native";
 import {Color} from "../../../constants/color";
+import {HomeScreenDropdownInfoProps, HomeScreenItemProps} from "../../../constants/types";
 
 const styles = StyleSheet.create({
     itemContainer: {
@@ -21,17 +22,11 @@ const styles = StyleSheet.create({
     }
 });
 
-type ItemProps = {
-    image: string;
-    text: string;
-    last: boolean;
-};
 
-const ItemContainer = ({image, text, last}: ItemProps) => {
+const ItemContainer = ({image, text, last}: HomeScreenItemProps) => {
     return (
         <View style={[styles.itemContainer, {marginBottom: last ? 0 : 20}]}>
-            {/*@ts-ignore*/}
-            <Image resizeMode={"contain"} source={image} style={styles.itemImage}/>
+            <Image resizeMode={"contain"} source={{uri: image}} style={styles.itemImage}/>
             <Text style={styles.itemText}>
                 {text}
             </Text>
@@ -39,11 +34,7 @@ const ItemContainer = ({image, text, last}: ItemProps) => {
     )
 }
 
-type Props = {
-    data: {image: string, id: string, title: string}[];
-};
-
-export const HomeScreenDropdownInfo = ({ data }: Props) => {
+export const HomeScreenDropdownInfo = ({ data }: HomeScreenDropdownInfoProps) => {
     return (
         <View>
             {data.map((item, index) => {

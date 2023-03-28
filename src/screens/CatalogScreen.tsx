@@ -1,30 +1,46 @@
-import React, {memo} from "react";
-import {SafeAreaView} from "react-native";
+import React, {memo, useEffect, useState} from "react";
 import Container from "../components/Container";
-import {catalogData} from "../constants/data";
 import ListItem from "./components/catalogScreen/ListItem";
 import {CustomScrollView} from "../components/CustomScrollView";
+import {getData} from "../components/data";
+import Spinner from "react-native-loading-spinner-overlay";
+import {CatalogScreenProps, ICatalog} from "../constants/types";
 
-interface Props {
-    navigation: any;
-}
+const CatalogScreen = ({navigation: {navigate}}: CatalogScreenProps) => {
+    const [catalog, setCatalog] = useState<ICatalog[]>([]);
+    const [loading, isLoading] = useState(false);
 
-const CatalogScreen = ({navigation: {navigate}}: Props) => {
+    const dataLoad = () => {
+        isLoading(true);
+        getData({mainPath: "main", documentPath: "catalog"})
+            .then((resp) => {
+                setCatalog(resp[0]);
+                isLoading(false);
+            })
+            .catch((e) => {
+                isLoading(false);
+                console.log(e);
+            });
+    }
+
+    useEffect(() => {
+        dataLoad()
+    }, []);
+
     return (
         <Container>
-            <SafeAreaView>
-                <CustomScrollView>
-                    {catalogData.map((item, index) => (
-                        <ListItem
-                            key={item.id}
-                            image={item.image}
-                            title={item.title}
-                            onPress={() => navigate("CatalogDetails", {data: item.data, name: item.title})}
-                            disabled={!item.data}
-                        />
-                    ))}
-                </CustomScrollView>
-            </SafeAreaView>
+            <CustomScrollView refreshing={loading} refresh={dataLoad}>
+                {catalog.map((item) => (
+                    <ListItem
+                        key={item.id}
+                        image={item.image}
+                        title={item.title}
+                        onPress={() => navigate("CatalogDetails", {data: item.data, name: item.title})}
+                        disabled={!item.data}
+                    />
+                ))}
+            </CustomScrollView>
+            <Spinner visible={loading}/>
         </Container>
     );
 }

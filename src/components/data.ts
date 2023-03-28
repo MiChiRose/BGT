@@ -1,12 +1,8 @@
 import dataBase from "../../Firebase/firestore";
 import {getDoc, doc} from "firebase/firestore";
+import {getDataProps} from "../constants/types";
 
-type DataProps = {
-    mainPath: string;
-    documentPath: string;
-}
-
-export const getData = async ({mainPath, documentPath}: DataProps) => {
+export const getData = async ({mainPath, documentPath}: getDataProps) => {
     const docRef = doc(dataBase, mainPath, documentPath)
     const docSnap = await getDoc(docRef)
 

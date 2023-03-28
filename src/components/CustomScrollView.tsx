@@ -1,11 +1,5 @@
 import {ScrollView,RefreshControl} from "react-native";
-
-type ScrollViewProps = {
-    children: JSX.Element | JSX.Element[];
-    refresh?: () => void;
-    refreshing?: boolean
-}
-
+import {ScrollViewProps} from "../constants/types";
 
 export const CustomScrollView = ({ children, refresh, refreshing }: ScrollViewProps) => {
     return (

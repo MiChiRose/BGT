@@ -1,13 +1,7 @@
 import MapView, {Marker} from "react-native-maps";
 import {Platform} from "react-native";
 import React from "react";
-
-type RegionProps = {
-    latitude: number;
-    longitude: number;
-    latitudeDelta: number;
-    longitudeDelta: number;
-}
+import {RegionProps} from "../constants/types";
 
 export const MapViewBGTFixed = React.memo(() => {
     const region: RegionProps = {

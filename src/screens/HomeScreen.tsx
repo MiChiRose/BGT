@@ -2,36 +2,44 @@ import React, {memo, useEffect, useState} from "react";
 import {Text} from "react-native";
 import GradientButton from "../components/GradientButton";
 import {CarouselHome} from "./components/homeScreen/Carousel";
-import {aboutCompanyText, catalogData, newsData, servicesData} from "../constants/data";
+import {aboutCompanyText, catalogData} from "../constants/data";
 import Container from "../components/Container";
 import DropdownItem from "./components/homeScreen/DropdownItem";
 import {CustomScrollView} from "../components/CustomScrollView";
 import {HomeScreenDropdownInfo} from "./components/homeScreen/HomeScreenDropdownInfo";
-import dataBase from "../../Firebase/firestore";
-import { collection, getDocs } from "firebase/firestore";
+import {getData} from "../components/data";
+import {HomeScreenProps, IData} from "../constants/types";
+import Spinner from "react-native-loading-spinner-overlay";
 
-type Props = {
-    navigation: any
-}
-
-const HomeScreen = ({navigation: {navigate}}: Props) => {
+const HomeScreen = ({navigation: {navigate}}: HomeScreenProps) => {
     const [showServices, setShowServices] = useState<boolean>(false);
     const [showAbout, setShowAbout] = useState<boolean>(false);
     const [showNews, setShowNews] = useState<boolean>(false);
 
-    // useEffect(() => {
+    const [newsData, setNewsData] = useState<IData[]>([]);
+    const [servicesData, setServicesData] = useState<IData[]>([]);
+    const [loading, isLoading] = useState(false);
 
-    const a = async () => {
-        const querySnapshot = await getDocs(collection(dataBase, "contacts"));
-        querySnapshot.forEach((doc) => {
-            console.log(doc.data());
-        });
+    const dataLoad = () => {
+        isLoading(true);
+        Promise.all([
+            getData({mainPath: "main", documentPath: "news"}),
+            getData({mainPath: "main", documentPath: "services"})
+        ])
+            .then((resp) => {
+                setNewsData(resp[0][0]);
+                setServicesData(resp[1][0]);
+                isLoading(false);
+            })
+            .catch((e) => {
+                isLoading(false);
+                console.log(e);
+            });
     }
 
     useEffect(() => {
-        a();
+        dataLoad()
     }, []);
-    // }, []);
 
     const buttons = [
         {
@@ -54,7 +62,7 @@ const HomeScreen = ({navigation: {navigate}}: Props) => {
 
     return (
         <Container>
-            <CustomScrollView>
+            <CustomScrollView refreshing={loading} refresh={dataLoad}>
                 <CarouselHome/>
                 <>
                     {buttons.map((item, index) => (
@@ -85,6 +93,7 @@ const HomeScreen = ({navigation: {navigate}}: Props) => {
                     children={<HomeScreenDropdownInfo data={newsData}/>}
                 />
             </CustomScrollView>
+            <Spinner visible={loading}/>
         </Container>
     );
 }

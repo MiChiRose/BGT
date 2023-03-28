@@ -5,22 +5,9 @@ import {MapViewBGTFixed} from "../components/MapViewBGTFixed";
 import {CustomScrollView} from "../components/CustomScrollView";
 import {getData} from "../components/data";
 import Spinner from "react-native-loading-spinner-overlay";
+import {ContactsData, ContactsMenuItemProps} from "../constants/types";
 
-interface MenuItemProps {
-    data: Array<any>;
-    image: any;
-}
-
-type ContactsData = {
-    header: string;
-    title: string;
-    phone?: string
-    fax?: string;
-    headOfDept?: string;
-    email?: string;
-}
-
-const MenuItem = ({data, image}: MenuItemProps): JSX.Element => {
+const MenuItem = ({data, image}: ContactsMenuItemProps): JSX.Element => {
     return (
         <View style={styles.menuItemContainer}>
             {data.map((element, index) => (
@@ -34,8 +21,8 @@ const MenuItem = ({data, image}: MenuItemProps): JSX.Element => {
                     <View style={styles.flex}>
                         <Text style={styles.textHeader}>{element.header}</Text>
                         {element.title && <Text style={styles.textTitle}>{element.title}</Text>}
-                        {element.phone &&<Text style={styles.textTitle}>{element.phone}</Text>}
-                        {element.fax &&<Text style={styles.textTitle}>{element.fax}</Text>}
+                        {element.phone && <Text style={styles.textTitle}>{element.phone}</Text>}
+                        {element.fax && <Text style={styles.textTitle}>{element.fax}</Text>}
                         {element.email && <Text style={styles.textTitle}>{element.email}</Text>}
                         {element.headOfDept && <Text style={styles.textTitle}>{element.headOfDept}</Text>}
                     </View>
