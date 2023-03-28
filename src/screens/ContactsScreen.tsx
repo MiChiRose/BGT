@@ -1,14 +1,25 @@
-import React, {memo} from "react";
+import React, {memo, useEffect, useState} from "react";
 import {Image, Text, View, StyleSheet} from "react-native";
 import Container from "../components/Container";
 import {MapViewBGTFixed} from "../components/MapViewBGTFixed";
-import {contactsData_Phones, contactsData_Address} from "../constants/data";
 import {CustomScrollView} from "../components/CustomScrollView";
+import {getData} from "../components/data";
+import Spinner from "react-native-loading-spinner-overlay";
 
 interface MenuItemProps {
     data: Array<any>;
     image: any;
 }
+
+type ContactsData = {
+    header: string;
+    title: string;
+    phone?: string
+    fax?: string;
+    headOfDept?: string;
+    email?: string;
+}
+
 const MenuItem = ({data, image}: MenuItemProps): JSX.Element => {
     return (
         <View style={styles.menuItemContainer}>
@@ -22,7 +33,11 @@ const MenuItem = ({data, image}: MenuItemProps): JSX.Element => {
                     </View>
                     <View style={styles.flex}>
                         <Text style={styles.textHeader}>{element.header}</Text>
-                        <Text style={styles.textTitle}>{element.title}</Text>
+                        {element.title && <Text style={styles.textTitle}>{element.title}</Text>}
+                        {element.phone &&<Text style={styles.textTitle}>{element.phone}</Text>}
+                        {element.fax &&<Text style={styles.textTitle}>{element.fax}</Text>}
+                        {element.email && <Text style={styles.textTitle}>{element.email}</Text>}
+                        {element.headOfDept && <Text style={styles.textTitle}>{element.headOfDept}</Text>}
                     </View>
                 </View>
             ))}
@@ -31,19 +46,42 @@ const MenuItem = ({data, image}: MenuItemProps): JSX.Element => {
 }
 
 const ContactsScreen = (): JSX.Element => {
+    const [addressData, setAddressData] = useState<ContactsData[]>([]);
+    const [contactsData, setContactsData] = useState<ContactsData[]>([]);
+    const [loading, isLoading] = useState(false);
+
+    const dataLoad = () => {
+        isLoading(true);
+        getData({mainPath: "main", documentPath: "contacts"})
+            .then((resp) => {
+                setAddressData(resp[0]);
+                setContactsData(resp[1]);
+                isLoading(false);
+            })
+            .catch((e) => {
+                isLoading(false);
+                console.log(e);
+            });
+    }
+
+    useEffect(() => {
+        dataLoad()
+    }, []);
+
     return (
         <Container>
-            <CustomScrollView>
+            <CustomScrollView refreshing={loading} refresh={dataLoad}>
                 <MapViewBGTFixed/>
                 <MenuItem
-                    data={contactsData_Address}
+                    data={addressData}
                     image={require("../../assets/address/address_gradient.png")}
                 />
                 <MenuItem
-                    data={contactsData_Phones}
+                    data={contactsData}
                     image={require("../../assets/phone/phone_gradient.png")}
                 />
             </CustomScrollView>
+            <Spinner visible={loading}/>
         </Container>
     );
 }
