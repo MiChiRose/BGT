@@ -1,8 +1,9 @@
 import {servicesData} from "../../../constants/data";
 import React from "react";
-import {Image, Text, View, StyleSheet} from "react-native";
+import {Image, Text, View, StyleSheet, TouchableOpacity} from "react-native";
 import {Color} from "../../../constants/color";
 import {HomeScreenDropdownInfoProps, HomeScreenItemProps} from "../../../constants/types";
+import * as WebBrowser from "expo-web-browser";
 
 const styles = StyleSheet.create({
     itemContainer: {
@@ -23,14 +24,14 @@ const styles = StyleSheet.create({
 });
 
 
-const ItemContainer = ({image, text, last}: HomeScreenItemProps) => {
+const ItemContainer = ({image, text, last, onPress}: HomeScreenItemProps) => {
     return (
-        <View style={[styles.itemContainer, {marginBottom: last ? 0 : 20}]}>
+        <TouchableOpacity onPress={onPress} style={[styles.itemContainer, {marginBottom: last ? 0 : 20}]}>
             <Image resizeMode={"contain"} source={{uri: image}} style={styles.itemImage}/>
             <Text style={styles.itemText}>
                 {text}
             </Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 
@@ -44,6 +45,7 @@ export const HomeScreenDropdownInfo = ({ data }: HomeScreenDropdownInfoProps) =>
                         image={item.image}
                         text={item.title}
                         last={index + 1 === servicesData.length}
+                        onPress={() => WebBrowser.openBrowserAsync(item.link)}
                     />
                 )
             })}

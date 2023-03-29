@@ -1,9 +1,10 @@
 import React from "react";
 import {Image, TouchableOpacity, StyleSheet} from "react-native";
 import {createStackNavigator} from "@react-navigation/stack";
-import {Gradient} from "../components/Gradient";
 import CatalogScreen from "../screens/CatalogScreen";
 import CatalogDetailScreen from "../screens/CatalogDetailScreen";
+import CatalogProductDetailScreen from "../screens/CatalogProductDetailScreen";
+import {Gradient} from "../components/Gradient";
 import {Color} from "../constants/color";
 
 const Stack = createStackNavigator();
@@ -39,6 +40,21 @@ export const CatalogNavigatorScreen = () => {
                 })}
                 name="CatalogDetails"
                 component={CatalogDetailScreen}
+            />
+            <Stack.Screen
+                options={({route,navigation}) => ({
+                    headerBackground: () => <Gradient style={styles.flex}/>,
+                    headerLeft: () => (
+                        <TouchableOpacity style={styles.drawerButton} onPress={() => navigation.goBack()}>
+                            <Image source={require("../../assets/arrow/arrow_white_back.png")}/>
+                        </TouchableOpacity>
+                    ),
+                    //@ts-ignore
+                    title: route.params?.name,
+                    headerTitleStyle: styles.titleStyle
+                })}
+                name="CatalogProductDetails"
+                component={CatalogProductDetailScreen}
             />
         </Stack.Navigator>
     );

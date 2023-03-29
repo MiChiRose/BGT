@@ -2,23 +2,19 @@ import React, {memo} from "react";
 import Container from "../components/Container";
 import ListItem from "./components/catalogScreen/ListItem";
 import {CustomScrollView} from "../components/CustomScrollView";
+import {CatalogDetailScreenProps, ListItemProps} from "../constants/types";
 
-interface Props {
-    route?: any;
-    navigation?: any;
-}
-const CatalogDetailScreen = ({route}: Props): JSX.Element => {
+const CatalogDetailScreen = ({route, navigation: {navigate}}: CatalogDetailScreenProps): JSX.Element => {
     const data = route.params.data;
     return (
         <Container>
             <CustomScrollView>
-                {data?.map((item: any) => (
+                {data?.map((item: ListItemProps) => (
                     <ListItem
+                        {...item}
                         key={item.id}
-                        title={item.title}
-                        image={item.image}
-                        onPress={() => {}}
-                        disabled={true}
+                        onPress={() => navigate("CatalogProductDetails", {data: item.data, name: item.title})}
+                        disabled={!item.data.length}
                     />
                 ))}
             </CustomScrollView>

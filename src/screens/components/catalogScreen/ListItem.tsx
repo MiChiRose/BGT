@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         flex: 1,
         borderRadius: 15,
         paddingVertical: 15,
-        paddingHorizontal: 20,
+        paddingHorizontal: 15,
         marginBottom: 15
     },
     image: {

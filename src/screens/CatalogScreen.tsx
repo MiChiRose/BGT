@@ -35,8 +35,11 @@ const CatalogScreen = ({navigation: {navigate}}: CatalogScreenProps) => {
                         key={item.id}
                         image={item.image}
                         title={item.title}
-                        onPress={() => navigate("CatalogDetails", {data: item.data, name: item.title})}
-                        disabled={!item.data}
+                        onPress={() => navigate(+item.id === 2 ? "CatalogProductDetails" : "CatalogDetails", {
+                            data: item.data,
+                            name: item.title
+                        })}
+                        disabled={!item.data.length}
                     />
                 ))}
             </CustomScrollView>

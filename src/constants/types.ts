@@ -11,11 +11,21 @@ export type HomeScreenItemProps = {
     image: string;
     text: string;
     last: boolean;
+    onPress: () => void;
 };
 
 export type HomeScreenDropdownInfoProps = {
     data: IData[];
 };
+
+export type CatalogProductDetailScreenProps = {
+    route?: any;
+}
+
+export type CatalogDetailScreenProps = {
+    route?: any;
+    navigation?: any;
+}
 
 export type ScrollViewProps = {
     children: JSX.Element | JSX.Element[];
@@ -56,12 +66,25 @@ export type IData = {
 }
 
 export type ListItemProps = {
+    id: string,
     image: any,
     title: string,
     onPress?: () => void,
     disabled?: boolean;
     showDetailsButton?: boolean
     pressDetailsButton?: () => void;
+    data: ListItemProductProps[] | [];
+}
+
+export type ListItemProductProps = {
+    id: string,
+    image: any,
+    title: string,
+    about: string,
+    link: string,
+    disabled?: boolean;
+    pressDetailsButton?: () => void;
+    pressOrderButton?: () => void;
 }
 
 export type RegionProps = {
