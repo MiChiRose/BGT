@@ -1,7 +1,23 @@
 import React, {memo} from "react";
 import {Image, Text, TouchableOpacity, StyleSheet, View} from "react-native";
 import {Color} from "../../../constants/color";
-import {ListItemProductProps} from "../../../constants/types";
+import {ListItemProductProps, ProductButtonProps} from "../../../constants/types";
+import {Gradient} from "../../../components/Gradient";
+
+const ProductButton = ({ disabled, text, onPress}: ProductButtonProps) => {
+    return (
+        <TouchableOpacity
+            disabled={disabled}
+            onPress={onPress}
+            style={styles.flex}
+            activeOpacity={0.8}
+        >
+            <Gradient style={styles.detailsButton}>
+                <Text style={styles.detailsButtonText}>{text}</Text>
+            </Gradient>
+        </TouchableOpacity>
+    )
+}
 
 const ListItemProduct = ({
                              image,
@@ -13,28 +29,26 @@ const ListItemProduct = ({
                          }: ListItemProductProps): JSX.Element => {
     return (
         <View style={styles.container}>
-            <Text style={{flex: 1, textAlign: "center", marginBottom: 15}}>{title}</Text>
-            <View style={{flex: 1, flexDirection: "row", alignItems: 'center'}}>
+            <Text style={styles.header}>{title}</Text>
+            <View style={styles.rowAlign}>
                 <Image source={{uri: image}} resizeMode={'contain'} style={styles.imageUrl}/>
-                <View style={styles.detailsContainer}>
-                    <Text style={{flex: 1}}>{about}</Text>
-                    <View style={{flex: 1, flexDirection: "row"}}>
-                        <TouchableOpacity
-                            disabled={disabled}
-                            onPress={pressOrderButton}
-                            style={styles.detailsButton}
-                        >
-                            <Text style={styles.detailsButtonText}>Заказать</Text>
-                        </TouchableOpacity>
-                        <View style={{marginHorizontal: 5}}/>
-                        <TouchableOpacity
-                            disabled={disabled}
-                            onPress={pressDetailsButton}
-                            style={styles.detailsButton}
-                        >
-                            <Text style={styles.detailsButtonText}>Подробнее</Text>
-                        </TouchableOpacity>
-                    </View>
+                <Text style={{flex: 1}}>{about}</Text>
+            </View>
+            <View style={styles.detailsContainer}>
+                <View style={styles.rowAlign}>
+                    <ProductButton
+                        disabled={disabled ?? false}
+                        //@ts-ignore
+                        onPress={pressOrderButton}
+                        text={"Заказать"}
+                    />
+                    <View style={styles.spaceBetween}/>
+                    <ProductButton
+                        disabled={disabled ?? false}
+                        //@ts-ignore
+                        onPress={pressDetailsButton}
+                        text={"Подробнее"}
+                    />
                 </View>
             </View>
         </View>
@@ -53,6 +67,14 @@ const styles = StyleSheet.create({
         paddingVertical: 15,
         paddingHorizontal: 15,
         marginBottom: 15
+    },
+    header: {
+        flex: 1,
+        textAlign: "center",
+        marginBottom: 15,
+        color: Color.detailsButton,
+        fontWeight: "500",
+        fontSize: 16
     },
     image: {
         flex: 1,
@@ -80,5 +102,16 @@ const styles = StyleSheet.create({
     },
     detailsButtonText: {
         color: Color.white
+    },
+    flex: {
+        flex: 1
+    },
+    spaceBetween: {
+        marginHorizontal: 5
+    },
+    rowAlign: {
+        flex: 1,
+        flexDirection: "row",
+        alignItems: "center"
     }
 })
