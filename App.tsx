@@ -5,7 +5,7 @@ import {StatusBar} from "expo-status-bar";
 export default function App() {
     return (
         <>
-            <StatusBar style={"light"} translucent={true} />
+            <StatusBar style={"auto"} translucent={true} />
             <DrawerNavigation/>
         </>
     )
