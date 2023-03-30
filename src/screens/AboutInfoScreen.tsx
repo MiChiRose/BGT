@@ -1,15 +1,38 @@
-import React, {memo} from "react";
+import React, {memo, useEffect, useState} from "react";
 import Container from "../components/Container";
-import {Text, StyleSheet} from "react-native";
-import {aboutCompanyText} from "../constants/data";
+import {Text, StyleSheet, Image, Dimensions} from "react-native";
 import {CustomScrollView} from "../components/CustomScrollView";
+import {getData} from "../components/data";
+import Spinner from "react-native-loading-spinner-overlay";
 
 const AboutInfoScreen = () => {
+    const [data, setData] = useState<{image: string, text: string}>();
+    const [loading, isLoading] = useState(false);
+
+    const dataLoad = () => {
+        isLoading(true);
+        getData({mainPath: "main", documentPath: "about"})
+            .then((resp) => {
+                setData(resp[0]);
+                isLoading(false);
+            })
+            .catch((e) => {
+                isLoading(false);
+                console.log(e);
+            });
+    }
+
+    useEffect(() => {
+        dataLoad()
+    }, []);
+
     return (
         <Container>
-            <CustomScrollView>
-                <Text style={styles.text}>{aboutCompanyText.text}</Text>
+            <CustomScrollView refreshing={loading} refresh={dataLoad}>
+                <Image style={styles.image1} source={!data?.image ? require("../../assets/aboutBgt/aboutBgt.png") : {uri: data?.image}}/>
+                <Text style={styles.text}>{data?.text}</Text>
             </CustomScrollView>
+            <Spinner visible={loading}/>
         </Container>
     )
 }
@@ -20,5 +43,15 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 16,
         fontWeight: '400'
+    },
+    image: {
+        width: '100%',
+        marginBottom: 25
+    },
+    image1: {
+        width: Dimensions.get("window").width - 50,
+        height: (Dimensions.get("window").width - 50) / 1.5,
+        resizeMode: "cover",
+        marginBottom: 25
     }
 });

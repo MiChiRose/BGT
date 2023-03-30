@@ -1,12 +1,16 @@
-import {ScrollView} from "react-native";
+import {ScrollView, RefreshControl} from "react-native";
+import {ScrollViewProps} from "../constants/types";
 
-type ScrollViewProps = {
-    children: JSX.Element | JSX.Element[];
-}
-
-export const CustomScrollView = ({ children }: ScrollViewProps) => {
+export const CustomScrollView = ({children, refresh, refreshing}: ScrollViewProps) => {
     return (
         <ScrollView
+            refreshControl={
+                <RefreshControl
+                    enabled={refreshing}
+                    refreshing={refreshing ? refreshing : false}
+                    onRefresh={refresh}
+                />
+            }
             showsHorizontalScrollIndicator={false}
             showsVerticalScrollIndicator={false}
         >

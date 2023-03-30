@@ -1,14 +1,16 @@
 import MapView, {Marker} from "react-native-maps";
 import {Platform} from "react-native";
 import React from "react";
+import {RegionProps} from "../constants/types";
 
 export const MapViewBGTFixed = React.memo(() => {
-    const region = {
+    const region: RegionProps = {
         latitude: 53.88319618614656,
         longitude: 27.47913406993698,
         latitudeDelta: 0.001,
         longitudeDelta: Platform.OS === "android" ? 0.0042 : 0.005
     }
+
     return (
         <MapView
             pitchEnabled={false}
