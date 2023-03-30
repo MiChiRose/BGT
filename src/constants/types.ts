@@ -65,6 +65,12 @@ export type IData = {
     title: string
 }
 
+export type ProductButtonProps = {
+    disabled: boolean;
+    onPress: () => void;
+    text: string;
+};
+
 export type ListItemProps = {
     id: string,
     image: any,
