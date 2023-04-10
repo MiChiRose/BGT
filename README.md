@@ -12,6 +12,8 @@
 `
 <img width="495" alt="Screenshot 2023-04-10 at 11 51 35 AM" src="https://user-images.githubusercontent.com/86774630/230868319-0757ff61-6a69-4a2b-9239-67db7a5abfce.png">
 
+<img width="954" alt="Screenshot 2023-04-10 at 12 00 19 PM" src="https://user-images.githubusercontent.com/86774630/230869948-f36b1de5-3619-4eb2-8dd2-b6c668620e7e.png">
+
 ## Информация
 
 
