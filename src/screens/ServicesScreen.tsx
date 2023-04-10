@@ -1,21 +1,13 @@
 import React, {memo, useEffect, useState} from "react";
+import Spinner from "react-native-loading-spinner-overlay";
+import * as WebBrowser from "expo-web-browser";
 import Container from "../components/Container";
-import {servicesData} from "../constants/data";
 import ListItem from "./components/catalogScreen/ListItem";
 import {CustomScrollView} from "../components/CustomScrollView";
 import {getData} from "../components/data";
-import Spinner from "react-native-loading-spinner-overlay";
-import * as Linking from 'expo-linking';
-import * as WebBrowser from 'expo-web-browser';
+import {IService} from "../constants/types";
 
-type IService = {
-    id: string;
-    title: string;
-    image: string;
-    link: any;
-};
-
-const ServicesScreen = ({ }) => {
+const ServicesScreen = () => {
     const [serviceData, setServicesData] = useState<IService[]>([]);
     const [loading, isLoading] = useState(false);
 
@@ -36,19 +28,19 @@ const ServicesScreen = ({ }) => {
         dataLoad()
     }, []);
 
-    console.log(serviceData)
-
     return (
         <Container>
             <CustomScrollView refreshing={loading} refresh={dataLoad}>
                 {serviceData.map((item) => (
                     <ListItem
                         key={item.id}
+                        id={item.id}
                         title={item.title}
                         image={item.image}
                         disabled={true}
                         showDetailsButton={true}
                         pressDetailsButton={() => WebBrowser.openBrowserAsync(item.link)}
+                        data={[]}
                     />
                 ))}
             </CustomScrollView>

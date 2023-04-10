@@ -1,5 +1,5 @@
 import React, {memo} from "react";
-import {SafeAreaView, StyleSheet} from "react-native";
+import {Platform, SafeAreaView, StyleSheet} from "react-native";
 
 interface Props {
     children: JSX.Element | JSX.Element[];
@@ -16,5 +16,5 @@ const Container = ({children}: Props): JSX.Element => {
 export default memo(Container);
 
 const styles = StyleSheet.create({
-    container: {flex: 1, marginHorizontal: 25, marginVertical: 30}
+    container: {flex: 1}
 })

@@ -1,6 +1,7 @@
 import React from "react";
+import {View, StyleSheet} from "react-native";
 import Animated, {Extrapolate, interpolate, useAnimatedStyle} from "react-native-reanimated";
-import {View} from "react-native";
+import {Color} from "../../../constants/color";
 
 export const PaginationItem: React.FC<{
     index: number
@@ -9,7 +10,7 @@ export const PaginationItem: React.FC<{
     animValue: Animated.SharedValue<number>
     isRotate?: boolean
 }> = (props) => {
-    const { animValue, index, length, backgroundColor, isRotate } = props;
+    const {animValue, index, length, backgroundColor, isRotate} = props;
     const width = 10;
 
     const animStyle = useAnimatedStyle(() => {
@@ -35,30 +36,22 @@ export const PaginationItem: React.FC<{
         };
     }, [animValue, index, length]);
     return (
-        <View
-            style={{
-                backgroundColor: "white",
-                width,
-                height: width,
-                borderRadius: 50,
-                overflow: "hidden",
-                transform: [
-                    {
-                        rotateZ: isRotate ? "90deg" : "0deg",
-                    },
-                ],
-            }}
-        >
+        <View style={[styles.container, {width, height: width, transform: [{rotateZ: isRotate ? "90deg" : "0deg"}]}]}>
             <Animated.View
-                style={[
-                    {
-                        borderRadius: 50,
-                        backgroundColor,
-                        flex: 1,
-                    },
-                    animStyle,
-                ]}
+                style={[{ backgroundColor }, styles.dotContainer ,animStyle]}
             />
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        overflow: "hidden",
+        backgroundColor: Color.white,
+        borderRadius: 50,
+    },
+    dotContainer: {
+        borderRadius: 50,
+        flex: 1,
+    }
+})

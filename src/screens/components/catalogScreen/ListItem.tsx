@@ -2,6 +2,7 @@ import React, {memo} from "react";
 import {Image, Text, TouchableOpacity, StyleSheet, View} from "react-native";
 import {Color} from "../../../constants/color";
 import {ListItemProps} from "../../../constants/types";
+import {SmallGradientButton} from "../../../components/SmallGradientButton";
 
 const ListItem = ({
                       image,
@@ -11,20 +12,17 @@ const ListItem = ({
                       disabled,
                       showDetailsButton = false
                   }: ListItemProps): JSX.Element => {
-
     return (
         <TouchableOpacity disabled={disabled} onPress={onPress} style={styles.container}>
-            <Image source={{uri: image}} resizeMode={'contain'} style={styles.imageUrl}/>
+            <Image source={{uri: image}} resizeMode={"contain"} style={styles.imageUrl}/>
             <View style={styles.detailsContainer}>
-                <Text style={{width: '100%'}}>{title}</Text>
+                <Text style={{width: "100%"}}>{title}</Text>
                 {showDetailsButton &&
-                    <TouchableOpacity
+                    <SmallGradientButton
                         disabled={false}
                         onPress={pressDetailsButton}
-                        style={styles.detailsButton}
-                    >
-                        <Text style={styles.detailsButtonText}>Подробнее</Text>
-                    </TouchableOpacity>
+                        text={"Подробнее"}
+                    />
                 }
             </View>
         </TouchableOpacity>
@@ -45,11 +43,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         marginBottom: 15
     },
-    image: {
-        flex: 1,
-        height: "100%",
-        marginRight: 15
-    },
     imageUrl: {
         height: 75,
         width: 110,
@@ -58,18 +51,6 @@ const styles = StyleSheet.create({
     detailsContainer: {
         height: "100%",
         flex: 1,
-        alignItems: "center",
         justifyContent: "space-evenly",
     },
-    detailsButton: {
-        marginTop: 15,
-        backgroundColor: Color.detailsButton,
-        paddingVertical: 5,
-        width: "100%",
-        borderRadius: 5,
-        alignItems: "center"
-    },
-    detailsButtonText: {
-        color: Color.white
-    }
 })

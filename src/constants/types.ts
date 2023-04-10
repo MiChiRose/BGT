@@ -1,3 +1,5 @@
+import {StyleProp, ViewStyle} from "react-native";
+
 export type getDataProps = {
     mainPath: string;
     documentPath: string;
@@ -65,10 +67,18 @@ export type IData = {
     title: string
 }
 
+export type IService = {
+    id: string;
+    title: string;
+    image: string;
+    link: any;
+};
+
 export type ProductButtonProps = {
     disabled: boolean;
-    onPress: () => void;
+    onPress?: () => void;
     text: string;
+    style?: StyleProp<ViewStyle>
 };
 
 export type ListItemProps = {
@@ -98,4 +108,11 @@ export type RegionProps = {
     longitude: number;
     latitudeDelta: number;
     longitudeDelta: number;
+}
+
+export type DropdownProps = {
+    show: boolean;
+    setShow: (val: boolean) => void;
+    children: JSX.Element;
+    title: string;
 }

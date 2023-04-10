@@ -1,10 +1,10 @@
 import React, {memo, useEffect, useState} from "react";
 import {Image, Text, View, StyleSheet} from "react-native";
+import Spinner from "react-native-loading-spinner-overlay";
 import Container from "../components/Container";
 import {MapViewBGTFixed} from "../components/MapViewBGTFixed";
 import {CustomScrollView} from "../components/CustomScrollView";
 import {getData} from "../components/data";
-import Spinner from "react-native-loading-spinner-overlay";
 import {ContactsData, ContactsMenuItemProps} from "../constants/types";
 
 const MenuItem = ({data, image}: ContactsMenuItemProps): JSX.Element => {
@@ -85,11 +85,11 @@ const styles = StyleSheet.create({
         marginLeft: 25,
         marginRight: 25,
         marginTop: 20,
-        flexDirection: 'column'
+        flexDirection: "column"
     },
     dataContainer: {
         marginBottom: 10,
-        flexDirection: 'row'
+        flexDirection: "row"
     },
     textHeader: {
         fontSize: 14,

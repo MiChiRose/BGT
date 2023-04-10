@@ -1,6 +1,6 @@
+import React from "react";
 import MapView, {Marker} from "react-native-maps";
 import {Platform} from "react-native";
-import React from "react";
 import {RegionProps} from "../constants/types";
 
 export const MapViewBGTFixed = React.memo(() => {

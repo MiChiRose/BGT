@@ -1,13 +1,14 @@
 {
   "name": "BGT",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "open -a Simulator && expo start --ios",
     "web": "expo start --web",
-    "create_android_apk": "eas build -p android --profile preview"
+    "create_android_apk": "eas build -p android --profile preview",
+    "prod": "expo start --no-dev --minify"
   },
   "dependencies": {
     "@react-native-masked-view/masked-view": "0.2.8",
