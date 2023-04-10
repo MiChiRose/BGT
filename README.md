@@ -7,10 +7,9 @@
 
 ## Скачать (Download)
 
-`
-Скачать мобильное приложение вы можете на странице GitHub в папке Releases/Staging
-`
-или [Нажав здесь](https://github.com/MiChiRose/BGT/releases/download/Staging/Belgastechnika_1.2.0_android.apk)
+`Скачать мобильное приложение вы можете`
+[Нажав здесь](https://github.com/MiChiRose/BGT/releases/download/Staging/Belgastechnika_1.2.0_android.apk)
+`или перейдя на страницу GitHub в раздел Releases/Staging`
 
 <img width="495" alt="Screenshot 2023-04-10 at 11 51 35 AM" src="https://user-images.githubusercontent.com/86774630/230868319-0757ff61-6a69-4a2b-9239-67db7a5abfce.png">
 
