@@ -76,7 +76,8 @@ const styles = StyleSheet.create({
     titleStyle: {
         color: Color.white,
         fontSize: 20,
-        fontWeight: '700',
+        fontWeight: "700",
+        width: "100%",
     },
     flex: {flex: 1}
 })

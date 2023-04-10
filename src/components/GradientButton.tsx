@@ -27,15 +27,15 @@ export default memo(GradientButton)
 const styles = StyleSheet.create({
     container: {
         height: 60,
-        width: '100%',
+        width: "100%",
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 5,
     },
     text: {
         color: Color.white,
-        fontWeight: '500',
+        fontWeight: "500",
         fontSize: 18,
-        textAlign: 'center'
+        textAlign: "center"
     }
 });

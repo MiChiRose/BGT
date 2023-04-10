@@ -1,5 +1,5 @@
 import React from "react";
-import {Dimensions, Image, Platform, SafeAreaView, StyleSheet, TouchableOpacity} from "react-native";
+import {Image, Platform, SafeAreaView, StyleSheet, TouchableOpacity} from "react-native";
 import {createDrawerNavigator, DrawerItemList} from "@react-navigation/drawer";
 import ServicesScreen from "../screens/ServicesScreen";
 import AboutInfoScreen from "../screens/AboutInfoScreen";
@@ -9,9 +9,10 @@ import {Gradient} from "../components/Gradient";
 import {Color} from "../constants/color";
 import {HomeNavigatorScreen} from "./HomeNavigatorScreen";
 import {CatalogNavigatorScreen} from "./CatalogNavigatorScreen";
+import {width} from "../constants/deviceParam";
 
 const Drawer = createDrawerNavigator();
-const screenWidth = Dimensions.get("window").width;
+const screenWidth = width;
 const drawerWidth = screenWidth - 72;
 
 export const DrawerNavigation = () => {
@@ -34,8 +35,8 @@ export const DrawerNavigation = () => {
                             <SafeAreaView style={styles.container}>
                                 <Image
                                     style={styles.drawerLogo}
-                                    source={require('../../assets/BTGLogo/belgaztechnika_new.png')}
-                                    resizeMode={'contain'}
+                                    source={require("../../assets/BTGLogo/belgaztechnika_new.png")}
+                                    resizeMode={"contain"}
                                 />
                                 <DrawerItemList {...props}/>
                             </SafeAreaView>
@@ -47,7 +48,7 @@ export const DrawerNavigation = () => {
                     name="HomeMain"
                     options={() => ({
                         drawerLabel: "Главная",
-                        title: '',
+                        title: "",
                         drawerLabelStyle: styles.drawerLabelStyle,
                         headerTitleStyle: styles.titleStyle,
                         headerShown: false,
@@ -58,7 +59,7 @@ export const DrawerNavigation = () => {
                     name="CatalogNavigator"
                     options={() => ({
                         drawerLabel: "Каталог",
-                        title: 'Каталог',
+                        title: "Каталог",
                         drawerLabelStyle: styles.drawerLabelStyle,
                         headerTitleStyle: styles.titleStyle,
                         headerShown: false
@@ -69,7 +70,7 @@ export const DrawerNavigation = () => {
                     name="Service"
                     options={{
                         drawerLabel: "Услуги",
-                        title: 'Услуги',
+                        title: "Услуги",
                         drawerLabelStyle: styles.drawerLabelStyle,
                         headerTitleStyle: styles.titleStyle
                     }}
@@ -79,7 +80,7 @@ export const DrawerNavigation = () => {
                     name="AboutInfo"
                     options={{
                         drawerLabel: "О Предприятии",
-                        title: 'О предприятии',
+                        title: "О предприятии",
                         drawerLabelStyle: styles.drawerLabelStyle,
                         headerTitleStyle: styles.titleStyle
                     }}
@@ -89,7 +90,7 @@ export const DrawerNavigation = () => {
                     name="Contacts"
                     options={{
                         drawerLabel: "Контакты",
-                        title: 'Контакты',
+                        title: "Контакты",
                         drawerLabelStyle: styles.drawerLabelStyle,
                         headerTitleStyle: styles.titleStyle
                     }}
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({
         paddingRight: 12
     },
     drawerLabelStyle: {
-        color: 'white',
+        color: Color.white,
         fontSize: 18,
     },
     drawerLogo: {
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
     titleStyle: {
         color: Color.white,
         fontSize: 20,
-        fontWeight: '700'
+        fontWeight: "700"
     },
     flex: {flex: 1}
 })

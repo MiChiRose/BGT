@@ -1,5 +1,6 @@
-import {LinearGradient} from "expo-linear-gradient";
 import {StyleProp, ViewStyle} from "react-native";
+import {LinearGradient} from "expo-linear-gradient";
+import {Color} from "../constants/color";
 
 interface GradientProps {
     children?: JSX.Element | JSX.Element[];
@@ -8,7 +9,7 @@ interface GradientProps {
 
 export const Gradient = ({children, style}: GradientProps): JSX.Element => {
     return (
-        <LinearGradient colors={['#0060AB', '#161973']} style={[style]}>
+        <LinearGradient colors={[Color.mainBlue, Color.detailsButton]} style={[style]}>
             {children}
         </LinearGradient>
     )

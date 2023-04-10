@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Image} from "react-native";
+import {View, Image, StyleSheet} from "react-native";
 import Carousel from 'react-native-reanimated-carousel';
 import {useSharedValue} from "react-native-reanimated";
 import {PaginationItem} from "./PaginationItem";
@@ -10,7 +10,7 @@ import {Color} from "../../../constants/color";
 export const CarouselHome = (): JSX.Element => {
     const progressValue = useSharedValue<number>(0)
     return (
-        <View style={{marginBottom: 30, borderRadius: 15}}>
+        <View style={styles.container}>
             <Carousel
                 loop
                 pagingEnabled={true}
@@ -27,35 +27,21 @@ export const CarouselHome = (): JSX.Element => {
                 data={carouselSlots}
                 scrollAnimationDuration={1000}
                 renderItem={({item}: { item: string, index: number }) => (
-                    <View
-                        style={{
-                            backgroundColor: Color.transparent,
-                            flex: 1,
-                            justifyContent: 'center',
-                        }}
-                    >
+                    <View style={styles.imageContainer}>
                         <Image
-                            style={{width: '100%', flex: 1, borderRadius: 15}}
+                            style={styles.image}
                             //@ts-ignore
                             source={item}
-                            resizeMode={'contain'}
+                            resizeMode={"contain"}
                         />
                     </View>
                 )}
             />
-            <View
-                style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    width: 100,
-                    alignSelf: "center",
-                    marginTop: 10
-                }}
-            >
+            <View style={styles.dotContainer}>
                 {carouselSlots.map((item, index) => {
                     return (
                         <PaginationItem
-                            backgroundColor={"black"}
+                            backgroundColor={Color.black}
                             animValue={progressValue}
                             index={index}
                             key={index}
@@ -66,4 +52,28 @@ export const CarouselHome = (): JSX.Element => {
             </View>
         </View>
     )
-}
+};
+
+const styles = StyleSheet.create({
+    container: {
+        marginBottom: 30,
+        borderRadius: 15
+    },
+    dotContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: 100,
+        alignSelf: "center",
+        marginTop: 10
+    },
+    imageContainer: {
+        backgroundColor: Color.transparent,
+        flex: 1,
+        justifyContent: "center",
+    },
+    image: {
+        width: "100%",
+        flex: 1,
+        borderRadius: 15
+    }
+})

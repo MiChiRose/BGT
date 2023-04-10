@@ -1,28 +1,8 @@
-import {servicesData} from "../../../constants/data";
 import React from "react";
+import * as WebBrowser from "expo-web-browser";
 import {Image, Text, View, StyleSheet, TouchableOpacity} from "react-native";
 import {Color} from "../../../constants/color";
 import {HomeScreenDropdownInfoProps, HomeScreenItemProps} from "../../../constants/types";
-import * as WebBrowser from "expo-web-browser";
-
-const styles = StyleSheet.create({
-    itemContainer: {
-        flexDirection: "row",
-        flex: 1,
-        alignItems: "center",
-    },
-    itemImage: {
-        width: 122,
-        height: 85
-    },
-    itemText: {
-        flex: 1,
-        fontSize: 16,
-        color: Color.detailsButton,
-        marginLeft: 18
-    }
-});
-
 
 const ItemContainer = ({image, text, last, onPress}: HomeScreenItemProps) => {
     return (
@@ -44,7 +24,7 @@ export const HomeScreenDropdownInfo = ({ data }: HomeScreenDropdownInfoProps) =>
                         key={item.id}
                         image={item.image}
                         text={item.title}
-                        last={index + 1 === servicesData.length}
+                        last={index + 1 === data.length}
                         onPress={() => WebBrowser.openBrowserAsync(item.link)}
                     />
                 )
@@ -52,3 +32,21 @@ export const HomeScreenDropdownInfo = ({ data }: HomeScreenDropdownInfoProps) =>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    itemContainer: {
+        flexDirection: "row",
+        flex: 1,
+        alignItems: "center",
+    },
+    itemImage: {
+        width: 122,
+        height: 85
+    },
+    itemText: {
+        flex: 1,
+        fontSize: 16,
+        color: Color.detailsButton,
+        marginLeft: 18
+    }
+});

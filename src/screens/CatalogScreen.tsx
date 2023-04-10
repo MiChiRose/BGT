@@ -1,9 +1,9 @@
 import React, {memo, useEffect, useState} from "react";
+import Spinner from "react-native-loading-spinner-overlay";
 import Container from "../components/Container";
 import ListItem from "./components/catalogScreen/ListItem";
 import {CustomScrollView} from "../components/CustomScrollView";
 import {getData} from "../components/data";
-import Spinner from "react-native-loading-spinner-overlay";
 import {CatalogScreenProps, ICatalog} from "../constants/types";
 
 const CatalogScreen = ({navigation: {navigate}}: CatalogScreenProps) => {
@@ -33,6 +33,8 @@ const CatalogScreen = ({navigation: {navigate}}: CatalogScreenProps) => {
                 {catalog.map((item) => (
                     <ListItem
                         key={item.id}
+                        id={item.id}
+                        data={[]}
                         image={item.image}
                         title={item.title}
                         onPress={() => navigate(+item.id === 2 ? "CatalogProductDetails" : "CatalogDetails", {
